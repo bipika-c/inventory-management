@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Report</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-container">
+                <i class="bi bi-box-seam-fill logo-icon"></i>
+                <h5 class="logo-text">Inventory MS</h5>
+            </div>
+        </div>
+        <ul class="nav flex-column mt-2">
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="bi bi-house-door-fill"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="bi bi-box-seam-fill"></i>
+                    <span>Inventory</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="bi bi-bell-fill"></i>
+                    <span>Alerts</span>
+                    <span class="badge-pill">3</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link active">
+                    <i class="bi bi-file-earmark-text-fill"></i>
+                    <span>Reports</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="bi bi-people-fill"></i>
+                    <span>Users</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="bi bi-gear-fill"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="d-flex align-items-center me-4">
+                    <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center me-2 overflow-hidden" 
+                         style="width: 40px; height: 40px;">
+                        <img src="assets/zoro.jpg" alt="Profile Picture" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+                <div class="user-details">
+                    <p class="user-name">Admin User</p>
+                    <p class="user-role">Administrator</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+
+              
+
+                <!-- navbar -->
+            </div>
+            <div class="header-right">
+                <div class="search-container">
+                    <i class="bi bi-search search-icon"></i>
+                    <input type="text" class="form-control" placeholder="Search...">
+                </div>
+                <div class="notification-container">
+                    <button class="btn notification-btn">
+                        <i class="bi bi-bell-fill"></i>
+                        <span class="notification-badge">10</span>
+                    </button>
+                </div>
+
+                
+                <div class="dropdown" >
+                    <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="color: #084a70;">
+                        <div class="d-flex align-items-center me-4">
+                            <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center me-2 overflow-hidden" 
+                                 style="width: 40px; height: 40px;">
+                                <img src="assets/zoro.jpg" alt="Profile Picture" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                        </div>
+                        <div class="d-none d-sm-block">
+                            <div class="fw-bold dark-blue">abc@gmail.com</div>
+                            <div class="small text-muted">ADMIN</div>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Profile</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+
+  <!-- breadcrumb start -->
+  <div class="breadcrumb-wrapper">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="#"><i class="bi bi-house"></i></a></li>
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="report.html">Report</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Inventory Report</li>
+        </ol>
+    </nav>
+</div>
+
+<!-- breadcrumb end -->
+
+
+        <!-- Content Area -->
+        <div class="content">
+            <div class="content-header">
+                <h4 class="page-title">Inventory Report</h4>
+                <div class="actions">
+                    <button class="btn action-btn" id="filterToggleBtn">
+                        <i class="bi bi-filter"></i>
+                        <span>Filter</span>
+                    </button>
+                    <!-- <button class="btn action-btn">
+                        <i class="bi bi-download"></i>
+                        <span>Export</span>
+                    </button> -->
+                    <button class="btn action-btn primary">
+                        <i class="bi bi-plus-lg"></i>
+                        <span>New Item</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="content-body">
+                <!-- Filter Panel -->
+                <div class="card filter-panel mb-3" id="filterPanel">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <h6 class="filter-title">Filter Items</h6>
+                            </div>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-md-3 col-sm-6">
+                                <label class="form-label">Status</label>
+                                <select class="form-select filter-select" id="statusFilter">
+                                    <option value="">All Statuses</option>
+                                    <option value="Available">Available</option>
+                                    <option value="Lost">Lost</option>
+                                    <option value="Under Maintenance">Under Maintenance</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <label class="form-label">Category</label>
+                                <select class="form-select filter-select" id="categoryFilter">
+                                    <option value="">All Categories</option>
+                                    <option value="Category 1">Category 1</option>
+                                    <option value="Category 2">Category 2</option>
+                                    <option value="Category 3">Category 3 </option>
+                                    <option value="Category 4">Category 4 </option>
+                                    <option value="Category 5">Category 5</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <label class="form-label">Location</label>
+                                <select class="form-select filter-select" id="locationFilter">
+                                    <option value="">All Locations</option>
+                                    <option value="Warehouse 1">Warehouse 1</option>
+                                    <option value="Warehouse 2">Warehouse 2</option>
+                                    <option value="Warehouse 3">Warehouse 3</option>
+                                    <option value="Warehouse 4">Warehouse 4</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <label class="form-label">Date Range</label>
+                                <select class="form-select filter-select" id="dateFilter">
+                                    <option value="">All Time</option>
+                                    <option value="today">Today</option>
+                                    <option value="week">This Week</option>
+                                    <option value="month">This Month</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Custom Date Range (hidden by default) -->
+                        <div class="row mt-3 custom-date-range" id="customDateRange" style="display: none;">
+                            <div class="col-md-3 col-sm-6">
+                                <label class="form-label">From</label>
+                                <input type="date" class="form-control" id="dateFrom">
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <label class="form-label">To</label>
+                                <input type="date" class="form-control" id="dateTo">
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-3">
+                            <div class="col-12 d-flex justify-content-end">
+                                <button class="btn btn-light me-2" id="resetFilters">Reset</button>
+                                <button class="btn btn-primary" id="applyFilters">Apply Filters</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">All Items <span class="filter-badge" id="activeFilters"></span></div>
+                        <div class="search-container">
+                            <i class="bi bi-search search-icon"></i>
+                            <input type="text" class="form-control" id="tableSearch" placeholder="Search items...">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>S.N</th>
+                                        <th>Item Name</th>
+                                        <th>Status</th>
+                                        <th>Category</th>
+                                        <th>Location</th>
+                                        <th>RFID</th>
+                                        <th>Time Stamp</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-category="Category 1" data-location="Warehouse 1">
+                                        <td>1</td>
+                                        <td>Light</td>
+                                        <td><span class="status-badge available">Available</span></td>
+                                        <td>Category 1</td>
+                                        <td>Warehouse 1</td>
+                                        <td>1234567890</td>
+                                        <td>2025-02-17 09:30:00</td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn view-btn" data-bs-toggle="tooltip" title="View Details">
+                                                    <i class="bi bi-eye-fill"></i>
+                                                </button>
+                                                <button class="btn edit-btn" data-bs-toggle="tooltip" title="Edit Item">
+                                                    <i class="bi bi-pencil-fill"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-category="Category 2" data-location="Warehouse 2">
+                                        <td>2</td>
+                                        <td>Camera</td>
+                                        <td><span class="status-badge lost">Lost</span></td>
+                                        <td>Category 2</td>
+                                        <td>Warehouse 2</td>
+                                        <td>1234567891</td>
+                                        <td>2025-02-17 09:30:00</td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn view-btn" data-bs-toggle="tooltip" title="View Details">
+                                                    <i class="bi bi-eye-fill"></i>
+                                                </button>
+                                                <button class="btn edit-btn" data-bs-toggle="tooltip" title="Edit Item">
+                                                    <i class="bi bi-pencil-fill"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-category="Category 3" data-location="Warehouse 3">
+                                        <td>3</td>
+                                        <td>Wire</td>
+                                        <td><span class="status-badge maintenance">Under Maintenance</span></td>
+                                        <td>Category 3</td>
+                                        <td>Warehouse 3</td>
+                                        <td>1234567892</td>
+                                        <td>2025-02-17 09:30:00</td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn view-btn" data-bs-toggle="tooltip" title="View Details">
+                                                    <i class="bi bi-eye-fill"></i>
+                                                </button>
+                                                <button class="btn edit-btn" data-bs-toggle="tooltip" title="Edit Item">
+                                                    <i class="bi bi-pencil-fill"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-category="Category 1" data-location="Warehouse 4">
+                                        <td>4</td>
+                                        <td>Chair</td>
+                                        <td><span class="status-badge available">Available</span></td>
+                                        <td>Category 1</td>
+                                        <td>Warehouse 4</td>
+                                        <td>1234567893</td>
+                                        <td>2025-02-17 09:30:00</td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn view-btn" data-bs-toggle="tooltip" title="View Details">
+                                                    <i class="bi bi-eye-fill"></i>
+                                                </button>
+                                                <button class="btn edit-btn" data-bs-toggle="tooltip" title="Edit Item">
+                                                    <i class="bi bi-pencil-fill"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-category="Category 5" data-location="Warehouse 3">
+                                        <td>5</td>
+                                        <td>Table</td>
+                                        <td><span class="status-badge lost">Lost</span></td>
+                                        <td>Category 5</td>
+                                        <td>Warehouse 3</td>
+                                        <td>1234567894</td>
+                                        <td>2025-02-17 09:30:00</td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn view-btn" data-bs-toggle="tooltip" title="View Details">
+                                                    <i class="bi bi-eye-fill"></i>
+                                                </button>
+                                                <button class="btn edit-btn" data-bs-toggle="tooltip" title="Edit Item">
+                                                    <i class="bi bi-pencil-fill"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-category="Category 4" data-location="Warehouse 2">
+                                        <td>6</td>
+                                        <td>Stand</td>
+                                        <td><span class="status-badge maintenance">Under Maintenance</span></td>
+                                        <td>Category 4</td>
+                                        <td>Warehouse 2</td>
+                                        <td>1234567895</td>
+                                        <td>2025-02-17 09:30:00</td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn view-btn" data-bs-toggle="tooltip" title="View Details">
+                                                    <i class="bi bi-eye-fill"></i>
+                                                </button>
+                                                <button class="btn edit-btn" data-bs-toggle="tooltip" title="Edit Item">
+                                                    <i class="bi bi-pencil-fill"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="pagination-info">Showing <span id="visibleItems">6</span> of <span id="totalItems">6</span> entries</div>
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" aria-disabled="true">
+                                        <i class="bi bi-chevron-left"></i>
+                                    </a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">
+                                        <i class="bi bi-chevron-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Item Details Modal -->
+    <div class="modal fade" id="itemDetailsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Item Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="item-details">
+                        <div class="item-image">
+                            <i class="bi bi-box-seam-fill"></i>
+                        </div>
+                        <div class="item-info">
+                            <div class="info-row">
+                                <div class="info-label">Item Name:</div>
+                                <div class="info-value" id="modalItemName">-</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Status:</div>
+                                <div class="info-value" id="modalStatus">-</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Category:</div>
+                                <div class="info-value" id="modalCategory">-</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Location:</div>
+                                <div class="info-value" id="modalLocation">-</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">RFID:</div>
+                                <div class="info-value" id="modalRfid">-</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Timestamp:</div>
+                                <div class="info-value" id="modalTimestamp">-</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Edit Item</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>

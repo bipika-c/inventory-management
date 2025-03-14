@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Report</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+   
+
+    <!-- navbar -->
+    <div id="navbar"></div>
+    
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+         <!-- breadcrumb start -->
+     <div class="breadcrumb-wrapper">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="#"><i class="bi bi-house"></i></a></li>
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="report.html">Report</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Event Report</li>
+                
+            </ol>
+        </nav>
+    </div>
+   
+    
+    <!-- breadcrumb end -->
+              
+        <!-- Content Area -->
+        <div class="content">
+            <div class="content-header">
+                <h4 class="page-title">Event Report</h4>
+                <div class="actions">
+                    <button class="btn action-btn" id="filterToggleBtn">
+                        <i class="bi bi-filter"></i>
+                        <span>Filter</span>
+                    </button>
+                    <!-- <button class="btn action-btn">
+                        <i class="bi bi-download"></i>
+                        <span>Export</span>
+                    </button> -->
+                    <button class="btn action-btn primary">
+                        <i class="bi bi-plus-lg"></i>
+                        <span>New Event</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="content-body">
+                <!-- Filter Panel -->
+                <div class="card filter-panel mb-3" id="filterPanel">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <h6 class="filter-title">Filter Items</h6>
+                            </div>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-md-3 col-sm-6">
+                                <label class="form-label">Status</label>
+                                <select class="form-select filter-select" id="statusFilter">
+                                    <option value="">All Statuses</option>
+                                    <option value="Completed">Completed</option>
+                                    <option value="Pending">Pending</option>
+                                </select>
+                            </div>
+                            <!-- <div class="col-md-3 col-sm-6">
+                                <label class="form-label">Category</label>
+                                <select class="form-select filter-select" id="categoryFilter">
+                                    <option value="">All Categories</option>
+                                    <option value="Category 1">Category 1</option>
+                                    <option value="Category 2">Category 2</option>
+                                    <option value="Category 3">Category 3 </option>
+                                    <option value="Category 4">Category 4 </option>
+                                    <option value="Category 5">Category 5</option>
+                                </select>
+                            </div> -->
+                            <!-- <div class="col-md-3 col-sm-6">
+                                <label class="form-label">Location</label>
+                                <select class="form-select filter-select" id="locationFilter">
+                                    <option value="">All Locations</option>
+                                    <option value="Warehouse 1">Warehouse 1</option>
+                                    <option value="Warehouse 2">Warehouse 2</option>
+                                    <option value="Warehouse 3">Warehouse 3</option>
+                                    <option value="Warehouse 4">Warehouse 4</option>
+                                </select>
+                            </div> -->
+                            <div class="col-md-3 col-sm-6">
+                                <label class="form-label">Date Range</label>
+                                <select class="form-select filter-select" id="dateFilter">
+                                    <option value="">All Time</option>
+                                    <option value="today">Today</option>
+                                    <option value="week">This Week</option>
+                                    <option value="month">This Month</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Custom Date Range (hidden by default) -->
+                        <div class="row mt-3 custom-date-range" id="customDateRange" style="display: none;">
+                            <div class="col-md-3 col-sm-6">
+                                <label class="form-label">From</label>
+                                <input type="date" class="form-control" id="dateFrom">
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <label class="form-label">To</label>
+                                <input type="date" class="form-control" id="dateTo">
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-3">
+                            <div class="col-12 d-flex justify-content-end">
+                                <button class="btn btn-light me-2" id="resetFilters">Reset</button>
+                                <button class="btn btn-primary" id="applyFilters">Apply Filters</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">All Events <span class="filter-badge" id="activeFilters"></span></div>
+                        <div class="search-container">
+                            <i class="bi bi-search search-icon"></i>
+                            <input type="text" class="form-control" id="tableSearch" placeholder="Search Events...">
+                        </div>
+                    </div>
+
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th scope="col">S.N</th>
+                                        <th scope="col">Event Name</th>
+                                        <th scope="col" colspan="2" class="text-center">Rental Period</th>
+                                        <th scope="col">Location</th>
+                                        <th scope="col">Event Date</th>
+                                        <th scope="col">Responsible</th>
+                                        <th scope="col">Phone No.</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col" class="text-center">Actions</th>
+                                    </tr>
+                                    <tr class="table-light">
+                                        <th></th>
+                                        <th></th>
+                                        <th class="text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <i class="bi bi-box-arrow-in-right text-success"></i>
+                                                <small>Take Out</small>
+                                            </div>
+                                        </th>
+                                        <th class="text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <i class="bi bi-box-arrow-in-left text-danger"></i>
+                                                <small>Return</small>
+                                            </div>
+                                        </th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-event-id="1">
+                                        <td>1.</td>
+                                        <td>Corporate Meeting</td>
+                                        <td class="text-center">Jan-22-2025<br>9:00 am</td>
+                                        <td class="text-center">Jan-22-2025<br>5:00 pm</td>
+                                        <td>Ktm</td>
+                                        <td>Jan-22-2025</td>
+                                        <td>Ram</td>
+                                        <td>9876543210</td>
+                                        <td><span class="badge bg-success">Completed</span></td>
+                                        <td class="text-center">
+                                            <button class="btn btn-sm btn-warning rounded-pill px-3 view-event">View</button>
+                                        </td>
+                                    </tr>
+                                    <tr data-event-id="2">
+                                        <td>2.</td>
+                                        <td>Wedding Reception</td>
+                                        <td class="text-center">Jan-25-2025<br>10:00 am</td>
+                                        <td class="text-center">Jan-26-2025<br>12:00 pm</td>
+                                        <td>Ktm</td>
+                                        <td>Jan-25-2025</td>
+                                        <td>Ram</td>
+                                        <td>9876543210</td>
+                                        <td><span class="badge bg-danger">Pending</span></td>
+                                        <td class="text-center">
+                                            <button class="btn btn-sm btn-warning rounded-pill px-3 view-event">View</button>
+                                        </td>
+                                    </tr>
+                                    <tr data-event-id="3">
+                                        <td>3.</td>
+                                        <td>Tech Conference</td>
+                                        <td class="text-center">Feb-05-2025<br>8:00 am</td>
+                                        <td class="text-center">Feb-07-2025<br>6:00 pm</td>
+                                        <td>Ktm</td>
+                                        <td>Feb-06-2025</td>
+                                        <td>Ram</td>
+                                        <td>9876543210</td>
+                                        <td><span class="badge bg-success">Completed</span></td>
+                                        <td class="text-center">
+                                            <button class="btn btn-sm btn-warning rounded-pill px-3 view-event">View</button>
+                                        </td>
+                                    </tr>
+                                    <tr data-event-id="4">
+                                        <td>4.</td>
+                                        <td>Birthday Party</td>
+                                        <td class="text-center">Jan-30-2025<br>2:00 pm</td>
+                                        <td class="text-center">Jan-30-2025<br>10:00 pm</td>
+                                        <td>Ktm</td>
+                                        <td>Jan-30-2025</td>
+                                        <td>RAM</td>
+                                        <td>9876543210</td>
+                                        <td><span class="badge bg-danger">Pending</span></td>
+                                        <td class="text-center">
+                                            <button class="btn btn-sm btn-warning rounded-pill px-3 view-event">View</button>
+                                        </td>
+                                    </tr>
+                                    <tr data-event-id="5">
+                                        <td>5.</td>
+                                        <td>Product Launch</td>
+                                        <td class="text-center">Mar-15-2025<br>9:00 am</td>
+                                        <td class="text-center">Mar-15-2025<br>8:00 pm</td>
+                                        <td>Ktm</td>
+                                        <td>Mar-15-2025</td>
+                                        <td>Ram</td>
+                                        <td>9876543210</td>
+                                        <td><span class="badge bg-success">Completed</span></td>
+                                        <td class="text-center">
+                                            <button class="btn btn-sm btn-warning rounded-pill px-3 view-event">View</button>
+                                        </td>
+                                    </tr>
+                                    <tr data-event-id="6">
+                                        <td>6.</td>
+                                        <td>Music Festival</td>
+                                        <td class="text-center">Apr-10-2025<br>6:00 am</td>
+                                        <td class="text-center">Apr-12-2025<br>11:00 pm</td>
+                                        <td>Ktm</td>
+                                        <td>Apr-11-2025</td>
+                                        <td>RAM</td>
+                                        <td>9876543210</td>
+                                        <td><span class="badge bg-danger">Pending</span></td>
+                                        <td class="text-center">
+                                            <button class="btn btn-sm btn-warning rounded-pill px-3 view-event">View</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="card-footer">
+                        <div class="pagination-info">Showing <span id="visibleItems">6</span> of <span id="totalItems">6</span> entries</div>
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" aria-disabled="true">
+                                        <i class="bi bi-chevron-left"></i>
+                                    </a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">
+                                        <i class="bi bi-chevron-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Item Details Modal -->
+    <div class="modal fade" id="itemDetailsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Item Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="item-details">
+                        <div class="item-image">
+                            <i class="bi bi-box-seam-fill"></i>
+                        </div>
+                        <div class="item-info">
+                            <div class="info-row">
+                                <div class="info-label">Item Name:</div>
+                                <div class="info-value" id="modalItemName">-</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Status:</div>
+                                <div class="info-value" id="modalStatus">-</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Category:</div>
+                                <div class="info-value" id="modalCategory">-</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Location:</div>
+                                <div class="info-value" id="modalLocation">-</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">RFID:</div>
+                                <div class="info-value" id="modalRfid">-</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Timestamp:</div>
+                                <div class="info-value" id="modalTimestamp">-</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Edit Item</button>
+                </div>
+            </div>
+        </div>
+    
+
+   <!-- navbar script -->
+
+   <script>
+    window.onload = function() {
+        window.scrollTo(0, 0); // Scrolls the page to the top when it loads
+    }
+</script>
+
+
+<script>
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
+  </script>
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
