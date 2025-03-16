@@ -337,5 +337,3 @@ function updateVisibleItemsCount() {
     document.getElementById('visibleItems').textContent = visibleCount;
 }
 
-
-

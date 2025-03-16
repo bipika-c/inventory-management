@@ -1,37 +1,464 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Dashboard</title>
-        <!-- Bootstrap 5 CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Bootstrap Icons -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-        <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="styles.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+      <!-- Animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
 <body>
-    <div id="navbar"></div>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-container">
+                <i class="bi bi-box-seam-fill logo-icon"></i>
+                <h5 class="logo-text">Inventory MS</h5>
+            </div>
+        </div>
+        <ul class="nav flex-column mt-2">
+            <li class="nav-item">
+                <a href="dashboard.html" class="nav-link active">
+                    <i class="bi bi-house-door-fill"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="inventory.html" class="nav-link">
+                    <i class="bi bi-box-seam-fill"></i>
+                    <span>Inventory</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="alerts.html" class="nav-link">
+                    <i class="bi bi-bell-fill"></i>
+                    <span>Alerts</span>
+                    <span class="badge-pill">3</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="report.html" class="nav-link">
+                    <i class="bi bi-file-earmark-text-fill"></i>
+                    <span>Reports</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="users.html" class="nav-link">
+                    <i class="bi bi-people-fill"></i>
+                    <span>Users</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="setting.html" class="nav-link">
+                    <i class="bi bi-gear-fill"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="d-flex align-items-center me-4">
+                    <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center me-2 overflow-hidden" 
+                         style="width: 40px; height: 40px;">
+                        <img src="assets/zoro.jpg" alt="Profile Picture" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+                <div class="user-details">
+                    <p class="user-name">Admin User</p>
+                    <p class="user-role">Administrator</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- Main Content -->
     <div class="main-content">
-        <h1>Welcome to the Homepage!</h1>
-        <p>This is the body content of the homepage.</p>
-      </div>
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
 
-  <script>
-    fetch('navbar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('navbar').innerHTML = data;
-      });
-  </script>
+              
+
+                <!-- navbar -->
+            </div>
+            <div class="header-right">
+                <div class="search-container">
+                    <i class="bi bi-search search-icon"></i>
+                    <input type="text" class="form-control" placeholder="Search...">
+                </div>
+                <div class="notification-container">
+                    <button class="btn notification-btn">
+                        <i class="bi bi-bell-fill"></i>
+                        <span class="notification-badge">10</span>
+                    </button>
+                </div>
+
+                
+                <div class="dropdown" >
+                    <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="color: #084a70;">
+                        <div class="d-flex align-items-center me-4">
+                            <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center me-2 overflow-hidden" 
+                                 style="width: 40px; height: 40px;">
+                                <img src="assets/zoro.jpg" alt="Profile Picture" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                        </div>
+                        <div class="d-none d-sm-block">
+                            <div class="fw-bold dark-blue">abc@gmail.com</div>
+                            <div class="small text-muted">ADMIN</div>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Profile</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+
+  <!-- breadcrumb start -->
+  <div class="breadcrumb-wrapper">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="#"><i class="bi bi-house"></i></a></li>
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+        </ol>
+    </nav>
+</div>
+
+<!-- breadcrumb end -->
+
+
+        <!-- Content Area -->
+        <div class="content">
+            <div class="content-header">
+                <h4 class="page-title">Dashboard</h4>
+                
+            </div>
+            
+            <div class="content-body">
+                <div class="dashboard-container">
+                    <div class="main-card animate__animated animate__fadeIn">
+                        <h2 class="main-title">Inventory Activity</h2>
+                    <div class="row g-4">
+                        <!-- To Be Sent Card -->
+                        <div class="col-md-6 col-lg-3">
+                            <div class="stat-card teal">
+                                <div class="p-3">
+                                    <h2 class="stat-value counter-animation" data-target="30">0</h2>
+                                    <p class="stat-label">To Be Sent</p>
+                                </div>
+                                <div class="stat-icon pulse">
+                                    <i class="fas fa-shipping-fast"></i>
+                                </div>
+                                <div class="more-info">
+                                    <a href="#" class="d-flex align-items-center">
+                                        More info <i class="fas fa-arrow-circle-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Sent Card -->
+                        <div class="col-md-6 col-lg-3">
+                            <div class="stat-card green">
+                                <div class="p-3">
+                                    <h2 class="stat-value counter-animation" data-target="53">0</h2>
+                                    <p class="stat-label">Sent</p>
+                                </div>
+                                <div class="stat-icon pulse">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="more-info">
+                                    <a href="#" class="d-flex align-items-center">
+                                        More info <i class="fas fa-arrow-circle-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Received Card -->
+                        <div class="col-md-6 col-lg-3">
+                            <div class="stat-card yellow">
+                                <div class="p-3">
+                                    <h2 class="stat-value counter-animation" data-target="44">0</h2>
+                                    <p class="stat-label">Received</p>
+                                </div>
+                                <div class="stat-icon pulse">
+                                    <i class="fas fa-inbox"></i>
+                                </div>
+                                <div class="more-info">
+                                    <a href="#" class="d-flex align-items-center">
+                                        More info <i class="fas fa-arrow-circle-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- To Be Received Card -->
+                        <div class="col-md-6 col-lg-3">
+                            <div class="stat-card red">
+                                <div class="p-3">
+                                    <h2 class="stat-value counter-animation" data-target="65">0</h2>
+                                    <p class="stat-label">To Be Received</p>
+                                </div>
+                                <div class="stat-icon pulse">
+                                    <i class="fas fa-truck-loading"></i>
+                                </div>
+                                <div class="more-info">
+                                    <a href="#" class="d-flex align-items-center">
+                                        More info <i class="fas fa-arrow-circle-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                  <!-- event chart -->
+                <div class="events-card animate__animated animate__fadeIn">
+                    <h2 class="card-title animate__animated animate__fadeInDown">Events</h2>
+                    
+                    <div class="events-content">
+                        <div class="events-stats">
+                            <div class="event-item animate__animated animate__fadeInLeft" data-bs-toggle="tooltip" data-bs-placement="left" title="All events in the system">
+                                <span class="event-label">Total Events</span>
+                                <span class="event-value total counter-animation" data-target="40">0</span>
+                            </div>
+                            
+                            <div class="event-item animate__animated animate__fadeInLeft" style="animation-delay: 0.1s;" data-bs-toggle="tooltip" data-bs-placement="left" title="Events currently in progress">
+                                <span class="event-label">Ongoing Events</span>
+                                <span class="event-value ongoing counter-animation" data-target="10">0</span>
+                            </div>
+                            
+                            <div class="event-item animate__animated animate__fadeInLeft" style="animation-delay: 0.2s;" data-bs-toggle="tooltip" data-bs-placement="left" title="Events scheduled for the future">
+                                <span class="event-label">Upcoming Events</span>
+                                <span class="event-value upcoming counter-animation" data-target="30">0</span>
+                            </div>
+                            
+                            <button class="view-btn">
+                                view <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="chart-container animate__animated animate__fadeInRight">
+                            <canvas id="eventsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+    <!-- Counter Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Counter animation
+            const counters = document.querySelectorAll('.counter-animation');
+            const speed = 500;
+            
+            counters.forEach(counter => {
+                const animate = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const increment = target / speed;
+                    
+                    if (count < target) {
+                        // Add increment and round to handle decimal increments
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(animate, 20);
+                    } else {
+                        counter.innerText = target;
+                        // No percentage sign needed anymore
+                    }
+                };
+                
+                animate();
+            });
+            
+            // Add entrance animations to cards
+            const cards = document.querySelectorAll('.stat-card');
+            cards.forEach((card, index) => {
+                card.classList.add('animate__animated', 'animate__fadeInUp');
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+        
+        // Hover effects for icons
+        const icons = document.querySelectorAll('.stat-icon');
+        icons.forEach(icon => {
+            icon.addEventListener('mouseover', function() {
+                this.classList.add('animate__animated', 'animate__rubberBand');
+            });
+            
+            icon.addEventListener('animationend', function() {
+                this.classList.remove('animate__animated', 'animate__rubberBand');
+            });
+        });
+    </script>
+
+
+    <!-- event script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize tooltips
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+            
+            // Counter animation
+            const counters = document.querySelectorAll('.counter-animation');
+            const speed = 200;
+            
+            counters.forEach(counter => {
+                const animate = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const increment = target / speed;
+                    
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(animate, 30);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                
+                animate();
+            });
+            
+            // Initialize and animate the chart
+            setTimeout(() => {
+                const ctx = document.getElementById('eventsChart').getContext('2d');
+                
+                // Create gradient for each segment
+                const blueGradient = ctx.createLinearGradient(0, 0, 0, 400);
+                blueGradient.addColorStop(0, '#007bff');
+                blueGradient.addColorStop(1, '#0056b3');
+                
+                const greenGradient = ctx.createLinearGradient(0, 0, 0, 400);
+                greenGradient.addColorStop(0, '#20c997');
+                greenGradient.addColorStop(1, '#0ca678');
+                
+                const orangeGradient = ctx.createLinearGradient(0, 0, 0, 400);
+                orangeGradient.addColorStop(0, '#fd7e14');
+                orangeGradient.addColorStop(1, '#dc6502');
+                
+                const eventsChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Total', 'Ongoing', 'Upcoming'],
+                        datasets: [{
+                            data: [40, 10, 30],
+                            backgroundColor: [blueGradient, greenGradient, orangeGradient],
+                            borderWidth: 0,
+                            hoverOffset: 5
+                        }]
+                    },
+                    options: {
+                        cutout: '65%',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        const label = context.label || '';
+                                        const value = context.raw || 0;
+                                        const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                        const percentage = Math.round((value / total) * 100);
+                                        return `${label}: ${value} (${percentage}%)`;
+                                    }
+                                },
+                                padding: 10,
+                                backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                                titleFont: {
+                                    size: 14
+                                },
+                                bodyFont: {
+                                    size: 14
+                                }
+                            }
+                        },
+                        animation: {
+                            animateScale: true,
+                            animateRotate: true,
+                            duration: 2000,
+                            easing: 'easeOutCirc'
+                        }
+                    }
+                });
+                
+                // Add hover effects to chart segments
+                const chartCanvas = document.getElementById('eventsChart');
+                chartCanvas.addEventListener('mousemove', (e) => {
+                    const activePoints = eventsChart.getElementsAtEventForMode(e, 'nearest', { intersect: true }, false);
+                    
+                    if (activePoints.length > 0) {
+                        chartCanvas.style.cursor = 'pointer';
+                    } else {
+                        chartCanvas.style.cursor = 'default';
+                    }
+                });
+                
+                // Add click event to chart segments
+                chartCanvas.addEventListener('click', (e) => {
+                    const activePoints = eventsChart.getElementsAtEventForMode(e, 'nearest', { intersect: true }, false);
+                    
+                    if (activePoints.length > 0) {
+                        const clickedIndex = activePoints[0].index;
+                        const labels = ['Total Events', 'Ongoing Events', 'Upcoming Events'];
+                        
+                        // Flash the corresponding text
+                        const eventValues = document.querySelectorAll('.event-value');
+                        eventValues[clickedIndex].classList.add('animate__animated', 'animate__heartBeat');
+                        
+                        setTimeout(() => {
+                            eventValues[clickedIndex].classList.remove('animate__animated', 'animate__heartBeat');
+                        }, 1000);
+                    }
+                });
+            }, 500);
+            
+            // Add click event to view button
+            const viewBtn = document.querySelector('.view-btn');
+            viewBtn.addEventListener('click', function() {
+                this.classList.add('animate__animated', 'animate__rubberBand');
+                
+                setTimeout(() => {
+                    this.classList.remove('animate__animated', 'animate__rubberBand');
+                    alert('Viewing all events...');
+                }, 800);
+            });
+        });
+    </script>
+ <!-- Chart.js -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Bootstrap 5 JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
     <script src="script.js"></script>
-
 </body>
 </html>
