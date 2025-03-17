@@ -48,8 +48,14 @@
             </li>
             <li class="nav-item">
                 <a href="report.html" class="nav-link">
-                    <i class="bi bi-file-earmark-text-fill"></i>
+                    <i class="bi bi-flag-fill"></i>
                     <span>Reports</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="accounting.html" class="nav-link">
+                    <i class="bi bi-file-earmark-text-fill"></i>
+                    <span>Accounting</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -228,8 +234,44 @@
                     </div>
                 </div>
 
+                
+
+                <!-- NEW: Inventory Status Bar Chart -->
+                <div class="inventory-status-card animate__animated animate__fadeIn">
+                    <h2 class="card-title animate__animated animate__fadeInDown ">Inventory Status</h2>
+                    
+                    <div class="inventory-content">
+                        <div class="row mb-4">
+                            <div class="col-md-4">
+                                <div class="status-item animate__animated animate__fadeInLeft" data-bs-toggle="tooltip" data-bs-placement="left" title="Items lost from inventory">
+                                    <span class="status-label">Inventory Lost</span>
+                                    <span class="status-value lost counter-animation" data-target="25">0</span>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div class="status-item animate__animated animate__fadeInLeft" style="animation-delay: 0.1s;" data-bs-toggle="tooltip" data-bs-placement="left" title="Items damaged in inventory">
+                                    <span class="status-label">Inventory Damaged</span>
+                                    <span class="status-value damaged counter-animation" data-target="42">0</span>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div class="status-item animate__animated animate__fadeInLeft" style="animation-delay: 0.2s;" data-bs-toggle="tooltip" data-bs-placement="left" title="Events affecting inventory">
+                                    <span class="status-label">Events Occurred</span>
+                                    <span class="status-value events counter-animation" data-target="18">0</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-container animate__animated animate__fadeInUp">
+                            <canvas id="inventoryBarChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
                   <!-- event chart -->
-                <div class="events-card animate__animated animate__fadeIn">
+                  <div class="events-card animate__animated animate__fadeIn">
                     <h2 class="card-title animate__animated animate__fadeInDown">Events</h2>
                     
                     <div class="events-content">
@@ -260,60 +302,14 @@
                     </div>
                 </div>
 
-
+                
             </div>
         </div>
+ 
+       </div>
     </div>
-</div>
-</div>
 
-
-    <!-- Counter Animation Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Counter animation
-            const counters = document.querySelectorAll('.counter-animation');
-            const speed = 500;
-            
-            counters.forEach(counter => {
-                const animate = () => {
-                    const target = +counter.getAttribute('data-target');
-                    const count = +counter.innerText;
-                    const increment = target / speed;
-                    
-                    if (count < target) {
-                        // Add increment and round to handle decimal increments
-                        counter.innerText = Math.ceil(count + increment);
-                        setTimeout(animate, 20);
-                    } else {
-                        counter.innerText = target;
-                        // No percentage sign needed anymore
-                    }
-                };
-                
-                animate();
-            });
-            
-            // Add entrance animations to cards
-            const cards = document.querySelectorAll('.stat-card');
-            cards.forEach((card, index) => {
-                card.classList.add('animate__animated', 'animate__fadeInUp');
-                card.style.animationDelay = `${index * 0.1}s`;
-            });
-        });
-        
-        // Hover effects for icons
-        const icons = document.querySelectorAll('.stat-icon');
-        icons.forEach(icon => {
-            icon.addEventListener('mouseover', function() {
-                this.classList.add('animate__animated', 'animate__rubberBand');
-            });
-            
-            icon.addEventListener('animationend', function() {
-                this.classList.remove('animate__animated', 'animate__rubberBand');
-            });
-        });
-    </script>
+    
 
 
     <!-- event script -->
@@ -452,10 +448,147 @@
                     alert('Viewing all events...');
                 }, 800);
             });
+            // NEW: Initialize the inventory bar chart
+            setTimeout(() => {
+                const barCtx = document.getElementById('inventoryBarChart').getContext('2d');
+                
+                // Sample data - replace with your actual data
+                const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                const lostData = [5, 8, 12, 7, 9, 11, 6, 8, 10, 5, 7, 9];
+                const damagedData = [10, 15, 8, 12, 17, 9, 11, 13, 7, 9, 12, 8];
+                const eventsData = [2, 3, 1, 4, 2, 3, 2, 1, 3, 2, 1, 2];
+                
+                // Create gradients for each dataset
+                const redGradient = barCtx.createLinearGradient(0, 0, 0, 400);
+                redGradient.addColorStop(0, 'rgba(220, 53, 69, 0.8)');
+                redGradient.addColorStop(1, 'rgba(220, 53, 69, 0.4)');
+                
+                const orangeGradient = barCtx.createLinearGradient(0, 0, 0, 400);
+                orangeGradient.addColorStop(0, 'rgba(255, 193, 7, 0.8)');
+                orangeGradient.addColorStop(1, 'rgba(255, 193, 7, 0.4)');
+                
+                const blueGradient = barCtx.createLinearGradient(0, 0, 0, 400);
+                blueGradient.addColorStop(0, 'rgba(13, 110, 253, 0.8)');
+                blueGradient.addColorStop(1, 'rgba(13, 110, 253, 0.4)');
+                
+                // Create the bar chart
+                const inventoryBarChart = new Chart(barCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: months,
+                        datasets: [
+                            {
+                                label: 'Inventory Lost',
+                                data: lostData,
+                                backgroundColor: redGradient,
+                                borderColor: 'rgba(220, 53, 69, 1)',
+                                borderWidth: 1,
+                                borderRadius: 4,
+                                barPercentage: 0.7,
+                                categoryPercentage: 0.8
+                            },
+                            {
+                                label: 'Inventory Damaged',
+                                data: damagedData,
+                                backgroundColor: orangeGradient,
+                                borderColor: 'rgba(255, 193, 7, 1)',
+                                borderWidth: 1,
+                                borderRadius: 4,
+                                barPercentage: 0.7,
+                                categoryPercentage: 0.8
+                            },
+                            {
+                                label: 'Events Occurred',
+                                data: eventsData,
+                                backgroundColor: blueGradient,
+                                borderColor: 'rgba(13, 110, 253, 1)',
+                                borderWidth: 1,
+                                borderRadius: 4,
+                                barPercentage: 0.7,
+                                categoryPercentage: 0.8
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    font: {
+                                        family: "'Inter', sans-serif",
+                                        size: 12
+                                    },
+                                    padding: 20
+                                }
+                            },
+                            tooltip: {
+                                mode: 'index',
+                                intersect: false,
+                                padding: 10,
+                                backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                                titleFont: {
+                                    size: 14
+                                },
+                                bodyFont: {
+                                    size: 14
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                    font: {
+                                        family: "'Inter', sans-serif"
+                                    }
+                                }
+                            },
+                            y: {
+                                beginAtZero: true,
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.05)'
+                                },
+                                ticks: {
+                                    font: {
+                                        family: "'Inter', sans-serif"
+                                    }
+                                }
+                            }
+                        },
+                        animation: {
+                            duration: 2000,
+                            easing: 'easeOutQuart'
+                        }
+                    }
+                });
+                
+                // Add hover effects to the chart
+                const barChartCanvas = document.getElementById('inventoryBarChart');
+                barChartCanvas.addEventListener('mousemove', (e) => {
+                    const activePoints = inventoryBarChart.getElementsAtEventForMode(e, 'nearest', { intersect: true }, false);
+                    
+                    if (activePoints.length > 0) {
+                        barChartCanvas.style.cursor = 'pointer';
+                    } else {
+                        barChartCanvas.style.cursor = 'default';
+                    }
+                });
+            }, 800);
+      
         });
+
+
     </script>
  <!-- Chart.js -->
  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+
     <!-- Bootstrap 5 JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->

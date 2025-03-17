@@ -45,7 +45,7 @@ body {
 
 /* Sidebar Styles */
 .sidebar {
-    height: 100vh;
+    height: 100%;
     background-color: var(--light-color);
     position: fixed;
     width: 250px;
@@ -181,16 +181,6 @@ body {
     align-items: center;
 }
 
-/* .menu-toggle {
-    background: none;
-    border: none;
-    color: var(--gray-700);
-    font-size: 1.25rem;
-    cursor: pointer;
-    padding: 0.5rem;
-    margin-right: 1rem;
-    display: none;
-} */
 
 .breadcrumb-wrapper {
     display: flex;
@@ -752,16 +742,18 @@ body {
 .dashboard-container {
     max-width: 1200px;
     margin: 0 auto;
+ 
 }
 
 .stat-card {
     border-radius: 8px;
     overflow: hidden;
     position: relative;
-    height: 120px;
+    height: 100px;
     color: white;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .stat-card:hover {
@@ -1010,4 +1002,77 @@ body {
     background-color: #333;
     font-size: 0.8rem;
     padding: 6px 10px;
+}
+
+
+
+
+/* New Inventory Status Bar Chart Styles */
+.inventory-status-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+
+.inventory-status-card .card-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #333;
+    position: relative;
+    
+}
+
+.inventory-content {
+    padding: 10px;
+}
+
+.status-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.status-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.status-label {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+.status-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.status-value.lost {
+    color: #dc3545;
+}
+
+.status-value.damaged {
+    color: #ffc107;
+}
+
+.status-value.events {
+    color: #0d6efd;
+}
+
+.inventory-status-card .chart-container {
+    height: 350px;
+    width: 100%;
+    margin-top: 10px;
 }

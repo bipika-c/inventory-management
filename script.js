@@ -337,3 +337,54 @@ function updateVisibleItemsCount() {
     document.getElementById('visibleItems').textContent = visibleCount;
 }
 
+
+
+// <!-- Counter Animation Script -->
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            // Counter animation
+            const counters = document.querySelectorAll('.counter-animation');
+            const speed = 500;
+            
+            counters.forEach(counter => {
+                const animate = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const increment = target / speed;
+                    
+                    if (count < target) {
+                        // Add increment and round to handle decimal increments
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(animate, 20);
+                    } else {
+                        counter.innerText = target;
+                        // No percentage sign needed anymore
+                    }
+                };
+                
+                animate();
+            });
+            
+            // Add entrance animations to cards
+            const cards = document.querySelectorAll('.stat-card');
+            cards.forEach((card, index) => {
+                card.classList.add('animate__animated', 'animate__fadeInUp');
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+        
+        // Hover effects for icons
+        const icons = document.querySelectorAll('.stat-icon');
+        icons.forEach(icon => {
+            icon.addEventListener('mouseover', function() {
+                this.classList.add('animate__animated', 'animate__rubberBand');
+            });
+            
+            icon.addEventListener('animationend', function() {
+                this.classList.remove('animate__animated', 'animate__rubberBand');
+            });
+        });
+    
+
+
+
