@@ -1076,3 +1076,89 @@ body {
     width: 100%;
     margin-top: 10px;
 }
+
+
+
+/* Additional styles for the accounting chart */
+.events-accounting-container {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    
+
+    
+}
+
+.events-card, .accounting-card {
+    flex: 1;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    transition: all 0.3s ease;
+    margin-top: 25px;
+  
+   
+}
+
+.events-card:hover, .accounting-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+}
+
+
+.accounting-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    
+}
+
+
+
+.accounting-item {
+    background: rgba(8, 74, 112, 0.05);
+    border-radius: 8px;
+    padding: 10px 15px;
+    flex: 1;
+    min-width: 120px;
+    transition: all 0.3s ease;
+    
+}
+
+.accounting-item:hover {
+    background: rgba(8, 74, 112, 0.1);
+}
+
+.accounting-label {
+    display: block;
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+.accounting-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #084a70;
+}
+
+.accounting-value.revenue {
+    color: #20c997;
+}
+
+.accounting-value.expenses {
+    color: #dc3545;
+}
+
+.accounting-value.profit {
+    color: #0d6efd;
+}
+
+@media (max-width: 992px) {
+    .events-accounting-container {
+        flex-direction: column;
+    }
+}

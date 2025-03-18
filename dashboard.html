@@ -159,7 +159,7 @@
                 <div class="dashboard-container">
                     <div class="main-card animate__animated animate__fadeIn">
                         <h2 class="main-title">Inventory Activity</h2>
-                    <div class="row g-4">
+                    <div class="row g-4 ">
                         <!-- To Be Sent Card -->
                         <div class="col-md-6 col-lg-3">
                             <div class="stat-card teal">
@@ -270,39 +270,71 @@
                     </div>
                 </div>
 
-                  <!-- event chart -->
-                  <div class="events-card animate__animated animate__fadeIn">
-                    <h2 class="card-title animate__animated animate__fadeInDown">Events</h2>
-                    
-                    <div class="events-content">
-                        <div class="events-stats">
-                            <div class="event-item animate__animated animate__fadeInLeft" data-bs-toggle="tooltip" data-bs-placement="left" title="All events in the system">
-                                <span class="event-label">Total Events</span>
-                                <span class="event-value total counter-animation" data-target="40">0</span>
-                            </div>
-                            
-                            <div class="event-item animate__animated animate__fadeInLeft" style="animation-delay: 0.1s;" data-bs-toggle="tooltip" data-bs-placement="left" title="Events currently in progress">
-                                <span class="event-label">Ongoing Events</span>
-                                <span class="event-value ongoing counter-animation" data-target="10">0</span>
-                            </div>
-                            
-                            <div class="event-item animate__animated animate__fadeInLeft" style="animation-delay: 0.2s;" data-bs-toggle="tooltip" data-bs-placement="left" title="Events scheduled for the future">
-                                <span class="event-label">Upcoming Events</span>
-                                <span class="event-value upcoming counter-animation" data-target="30">0</span>
-                            </div>
-                            
-                            <button class="view-btn">
-                                view <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
+                  <!-- Events and Accounting Charts Container -->
+                  <div class="events-accounting-container">
+                    <!-- Event chart -->
+                    <div class="events-card animate__animated animate__fadeIn"  style="height: 250px; width: 100%;">
+                        <h2 class="card-title animate__animated animate__fadeInDown">Events</h2>
                         
-                        <div class="chart-container animate__animated animate__fadeInRight">
-                            <canvas id="eventsChart"></canvas>
+                        <div class="events-content">
+                            <div class="events-stats ">
+                                <div class="event-item animate__animated animate__fadeInLeft" data-bs-toggle="tooltip" data-bs-placement="left" title="All events in the system">
+                                    <span class="event-label">Total Events</span>
+                                    <span class="event-value total counter-animation" data-target="40">0</span>
+                                </div>
+                                
+                                <div class="event-item animate__animated animate__fadeInLeft" style="animation-delay: 0.1s;" data-bs-toggle="tooltip" data-bs-placement="left" title="Events currently in progress">
+                                    <span class="event-label">Ongoing Events</span>
+                                    <span class="event-value ongoing counter-animation" data-target="10">0</span>
+                                </div>
+                                
+                                <div class="event-item animate__animated animate__fadeInLeft" style="animation-delay: 0.2s;" data-bs-toggle="tooltip" data-bs-placement="left" title="Events scheduled for the future">
+                                    <span class="event-label">Upcoming Events</span>
+                                    <span class="event-value upcoming counter-animation" data-target="30">0</span>
+                                </div>
+                                
+                                <button class="view-btn">
+                                    view <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="chart-container animate__animated animate__fadeInRight">
+                                <canvas id="eventsChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NEW: Accounting Line Chart -->
+                    <div class="accounting-card animate__animated animate__fadeIn">
+                        <h2 class="card-title animate__animated animate__fadeInDown">Accounting</h2>
+                        
+                        <div class="accounting-content">
+                            <div class="accounting-stats">
+                                <div class="accounting-item animate__animated animate__fadeInLeft" data-bs-toggle="tooltip" data-bs-placement="left" title="Total revenue from inventory">
+                                    <span class="accounting-label">Revenue</span>
+                                    <span class="accounting-value revenue counter-animation" data-target="85000">0</span>
+                                </div>
+                                
+                                <div class="accounting-item animate__animated animate__fadeInLeft" style="animation-delay: 0.1s;" data-bs-toggle="tooltip" data-bs-placement="left" title="Total expenses for inventory">
+                                    <span class="accounting-label">Expenses</span>
+                                    <span class="accounting-value expenses counter-animation" data-target="45000">0</span>
+                                </div>
+                                
+                                <div class="accounting-item animate__animated animate__fadeInLeft" style="animation-delay: 0.2s;" data-bs-toggle="tooltip" data-bs-placement="left" title="Net profit from inventory">
+                                    <span class="accounting-label">Profit</span>
+                                    <span class="accounting-value profit counter-animation" data-target="40000">0</span>
+                                </div>
+                            </div>
+
+                            <div class="accounting-chart w-100 p-4">
+                                <canvas id="accountingChart" style="height: 400px; width: 100%; "></canvas>
+                              </div>
+
                         </div>
                     </div>
                 </div>
 
-                
+
             </div>
         </div>
  
@@ -448,6 +480,7 @@
                     alert('Viewing all events...');
                 }, 800);
             });
+
             // NEW: Initialize the inventory bar chart
             setTimeout(() => {
                 const barCtx = document.getElementById('inventoryBarChart').getContext('2d');
@@ -579,6 +612,199 @@
                 });
             }, 800);
       
+
+            // NEW: Initialize the accounting line chart
+            setTimeout(() => {
+                const accountingCtx = document.getElementById('accountingChart').getContext('2d');
+                
+                // Sample data for accounting chart
+                const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                const revenueData = [42000, 45000, 48000, 46000, 52000, 58000, 62000, 65000, 68000, 72000, 78000, 85000];
+                const expensesData = [25000, 26000, 28000, 27000, 30000, 32000, 35000, 36000, 38000, 40000, 42000, 45000];
+                const profitData = revenueData.map((revenue, index) => revenue - expensesData[index]);
+                
+                // Create gradients for each dataset
+                const revenueGradient = accountingCtx.createLinearGradient(0, 0, 0, 400);
+                revenueGradient.addColorStop(0, 'rgba(32, 201, 151, 0.8)');
+                revenueGradient.addColorStop(1, 'rgba(32, 201, 151, 0.1)');
+                
+                const expensesGradient = accountingCtx.createLinearGradient(0, 0, 0, 400);
+                expensesGradient.addColorStop(0, 'rgba(220, 53, 69, 0.8)');
+                expensesGradient.addColorStop(1, 'rgba(220, 53, 69, 0.1)');
+                
+                const profitGradient = accountingCtx.createLinearGradient(0, 0, 0, 400);
+                profitGradient.addColorStop(0, 'rgba(13, 110, 253, 0.8)');
+                profitGradient.addColorStop(1, 'rgba(13, 110, 253, 0.1)');
+                
+                // Create the line chart
+                const accountingChart = new Chart(accountingCtx, {
+                    type: 'line',
+                    data: {
+                        labels: months,
+                        datasets: [
+                            {
+                                label: 'Revenue',
+                                data: revenueData,
+                                borderColor: '#20c997',
+                                backgroundColor: revenueGradient,
+                                borderWidth: 2,
+                                pointBackgroundColor: '#20c997',
+                                pointBorderColor: '#fff',
+                                pointBorderWidth: 2,
+                                pointRadius: 4,
+                                pointHoverRadius: 6,
+                                fill: true,
+                                tension: 0.4
+                            },
+                            {
+                                label: 'Expenses',
+                                data: expensesData,
+                                borderColor: '#dc3545',
+                                backgroundColor: expensesGradient,
+                                borderWidth: 2,
+                                pointBackgroundColor: '#dc3545',
+                                pointBorderColor: '#fff',
+                                pointBorderWidth: 2,
+                                pointRadius: 4,
+                                pointHoverRadius: 6,
+                                fill: true,
+                                tension: 0.4
+                            },
+                            {
+                                label: 'Profit',
+                                data: profitData,
+                                borderColor: '#0d6efd',
+                                backgroundColor: profitGradient,
+                                borderWidth: 2,
+                                pointBackgroundColor: '#0d6efd',
+                                pointBorderColor: '#fff',
+                                pointBorderWidth: 2,
+                                pointRadius: 4,
+                                pointHoverRadius: 6,
+                                fill: true,
+                                tension: 0.4
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    font: {
+                                        family: "'Inter', sans-serif",
+                                        size: 12
+                                    },
+                                    padding: 20
+                                }
+                            },
+                            tooltip: {
+                                mode: 'index',
+                                intersect: false,
+                                padding: 10,
+                                backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                                titleFont: {
+                                    size: 14
+                                },
+                                bodyFont: {
+                                    size: 14
+                                },
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.dataset.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        if (context.parsed.y !== null) {
+                                            label += new Intl.NumberFormat('ne-NP', { 
+                                                style: 'currency', 
+                                                currency: 'NPR',
+                                                minimumFractionDigits: 0,
+                                                maximumFractionDigits: 0
+                                            }).format(context.parsed.y);
+                                        }
+                                        return label;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                    font: {
+                                        family: "'Inter', sans-serif"
+                                    }
+                                }
+                            },
+                            y: {
+                                beginAtZero: true,
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.05)'
+                                },
+                                ticks: {
+                                    font: {
+                                        family: "'Inter', sans-serif"
+                                    },
+                                    callback: function(value) {
+                                        return 'NRP' + value.toLocaleString();
+                                    }
+                                }
+                            }
+                        },
+                        animation: {
+                            duration: 2000,
+                            easing: 'easeOutQuart'
+                        },
+                        interaction: {
+                            mode: 'nearest',
+                            axis: 'x',
+                            intersect: false
+                        }
+                    }
+                });
+                
+                // Add hover effects to the chart
+                const accountingChartCanvas = document.getElementById('accountingChart');
+                accountingChartCanvas.addEventListener('mousemove', (e) => {
+                    const activePoints = accountingChart.getElementsAtEventForMode(e, 'nearest', { intersect: false }, false);
+                    
+                    if (activePoints.length > 0) {
+                        accountingChartCanvas.style.cursor = 'pointer';
+                    } else {
+                        accountingChartCanvas.style.cursor = 'default';
+                    }
+                });
+                
+                // Add click event to chart points
+                accountingChartCanvas.addEventListener('click', (e) => {
+                    const activePoints = accountingChart.getElementsAtEventForMode(e, 'nearest', { intersect: false }, false);
+                    
+                    if (activePoints.length > 0) {
+                        const clickedIndex = activePoints[0].index;
+                        const clickedDataset = activePoints[0].datasetIndex;
+                        const value = accountingChart.data.datasets[clickedDataset].data[clickedIndex];
+                        const label = accountingChart.data.datasets[clickedDataset].label;
+                        const month = accountingChart.data.labels[clickedIndex];
+                        
+                        // Flash the corresponding text
+                        const accountingValues = document.querySelectorAll('.accounting-value');
+                        accountingValues[clickedDataset].classList.add('animate__animated', 'animate__heartBeat');
+                        
+                        setTimeout(() => {
+                            accountingValues[clickedDataset].classList.remove('animate__animated', 'animate__heartBeat');
+                        }, 1000);
+                        
+                        // Show detailed information
+                        alert(`${label} for ${month}: $${value.toLocaleString()}`);
+                    }
+                });
+            }, 1000);
+
         });
 
 
