@@ -10,12 +10,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
+  
       <!-- Animate.css for animations -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+      <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
+
+
 </head>
 <body>
     <!-- Sidebar -->
@@ -157,9 +165,9 @@
             
             <div class="content-body">
                 <div class="dashboard-container">
-                    <div class="main-card animate__animated animate__fadeIn">
+                    <div class="main-card animate__animated animate__fadeIn"data-aos="fade-up" data-aos-delay="200">
                         <h2 class="main-title">Inventory Activity</h2>
-                    <div class="row g-4 ">
+                    <div class="row g-4 " >
                         <!-- To Be Sent Card -->
                         <div class="col-md-6 col-lg-3">
                             <div class="stat-card teal">
@@ -264,7 +272,7 @@
                             </div>
                         </div>
                         
-                        <div class="chart-container animate__animated animate__fadeInUp">
+                        <div class="chart-container animate__animated animate__fadeInUp"data-aos="fade-up" data-aos-delay="300">
                             <canvas id="inventoryBarChart"></canvas>
                         </div>
                     </div>
@@ -276,7 +284,7 @@
                     <div class="events-card animate__animated animate__fadeIn"  style="height: 250px; width: 100%;">
                         <h2 class="card-title animate__animated animate__fadeInDown">Events</h2>
                         
-                        <div class="events-content">
+                        <div class="events-content"data-aos="fade-up" data-aos-delay="200">
                             <div class="events-stats ">
                                 <div class="event-item animate__animated animate__fadeInLeft" data-bs-toggle="tooltip" data-bs-placement="left" title="All events in the system">
                                     <span class="event-label">Total Events</span>
@@ -299,16 +307,16 @@
                             </div>
                             
                             <div class="chart-container animate__animated animate__fadeInRight">
-                                <canvas id="eventsChart"></canvas>
+                                <canvas id="eventsChart" data-aos="fade-un" data-aos-delay="400"></canvas>
                             </div>
                         </div>
                     </div>
 
                     <!-- NEW: Accounting Line Chart -->
                     <div class="accounting-card animate__animated animate__fadeIn">
-                        <h2 class="card-title animate__animated animate__fadeInDown">Accounting</h2>
+                        <h2 class="card-title animate__animated animate__fadeInDown"data-aos="fade-up" data-aos-delay="200">Accounting</h2>
                         
-                        <div class="accounting-content">
+                        <div class="accounting-content"data-aos="fade-up" data-aos-delay="200">
                             <div class="accounting-stats">
                                 <div class="accounting-item animate__animated animate__fadeInLeft" data-bs-toggle="tooltip" data-bs-placement="left" title="Total revenue from inventory">
                                     <span class="accounting-label">Revenue</span>
@@ -327,8 +335,7 @@
                             </div>
 
                             <div class="accounting-chart w-100 p-4">
-                                <canvas id="accountingChart" style="height: 400px; width: 100%; "></canvas>
-                              </div>
+                                <canvas id="accountingChart" data-aos="fade-up" style="height: 400px; width: 100%;"></canvas>                              </div>
 
                         </div>
                     </div>
@@ -347,6 +354,12 @@
     <!-- event script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+
+            AOS.init({
+                duration: 800, // Animation duration in milliseconds
+                once: true, // Animation will only happen once
+            });
+            
             // Initialize tooltips
             const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
             tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -362,6 +375,7 @@
                     const target = +counter.getAttribute('data-target');
                     const count = +counter.innerText;
                     const increment = target / speed;
+                    
                     
                     if (count < target) {
                         counter.innerText = Math.ceil(count + increment);
@@ -609,164 +623,165 @@
                     } else {
                         barChartCanvas.style.cursor = 'default';
                     }
+                    
                 });
             }, 800);
       
 
-            // NEW: Initialize the accounting line chart
-            setTimeout(() => {
-                const accountingCtx = document.getElementById('accountingChart').getContext('2d');
-                
-                // Sample data for accounting chart
-                const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-                const revenueData = [42000, 45000, 48000, 46000, 52000, 58000, 62000, 65000, 68000, 72000, 78000, 85000];
-                const expensesData = [25000, 26000, 28000, 27000, 30000, 32000, 35000, 36000, 38000, 40000, 42000, 45000];
-                const profitData = revenueData.map((revenue, index) => revenue - expensesData[index]);
-                
-                // Create gradients for each dataset
-                const revenueGradient = accountingCtx.createLinearGradient(0, 0, 0, 400);
-                revenueGradient.addColorStop(0, 'rgba(32, 201, 151, 0.8)');
-                revenueGradient.addColorStop(1, 'rgba(32, 201, 151, 0.1)');
-                
-                const expensesGradient = accountingCtx.createLinearGradient(0, 0, 0, 400);
-                expensesGradient.addColorStop(0, 'rgba(220, 53, 69, 0.8)');
-                expensesGradient.addColorStop(1, 'rgba(220, 53, 69, 0.1)');
-                
-                const profitGradient = accountingCtx.createLinearGradient(0, 0, 0, 400);
-                profitGradient.addColorStop(0, 'rgba(13, 110, 253, 0.8)');
-                profitGradient.addColorStop(1, 'rgba(13, 110, 253, 0.1)');
-                
-                // Create the line chart
-                const accountingChart = new Chart(accountingCtx, {
-                    type: 'line',
-                    data: {
-                        labels: months,
-                        datasets: [
-                            {
-                                label: 'Revenue',
-                                data: revenueData,
-                                borderColor: '#20c997',
-                                backgroundColor: revenueGradient,
-                                borderWidth: 2,
-                                pointBackgroundColor: '#20c997',
-                                pointBorderColor: '#fff',
-                                pointBorderWidth: 2,
-                                pointRadius: 4,
-                                pointHoverRadius: 6,
-                                fill: true,
-                                tension: 0.4
-                            },
-                            {
-                                label: 'Expenses',
-                                data: expensesData,
-                                borderColor: '#dc3545',
-                                backgroundColor: expensesGradient,
-                                borderWidth: 2,
-                                pointBackgroundColor: '#dc3545',
-                                pointBorderColor: '#fff',
-                                pointBorderWidth: 2,
-                                pointRadius: 4,
-                                pointHoverRadius: 6,
-                                fill: true,
-                                tension: 0.4
-                            },
-                            {
-                                label: 'Profit',
-                                data: profitData,
-                                borderColor: '#0d6efd',
-                                backgroundColor: profitGradient,
-                                borderWidth: 2,
-                                pointBackgroundColor: '#0d6efd',
-                                pointBorderColor: '#fff',
-                                pointBorderWidth: 2,
-                                pointRadius: 4,
-                                pointHoverRadius: 6,
-                                fill: true,
-                                tension: 0.4
-                            }
-                        ]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                position: 'top',
-                                labels: {
-                                    font: {
-                                        family: "'Inter', sans-serif",
-                                        size: 12
-                                    },
-                                    padding: 20
-                                }
-                            },
-                            tooltip: {
-                                mode: 'index',
-                                intersect: false,
-                                padding: 10,
-                                backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                                titleFont: {
-                                    size: 14
-                                },
-                                bodyFont: {
-                                    size: 14
-                                },
-                                callbacks: {
-                                    label: function(context) {
-                                        let label = context.dataset.label || '';
-                                        if (label) {
-                                            label += ': ';
-                                        }
-                                        if (context.parsed.y !== null) {
-                                            label += new Intl.NumberFormat('ne-NP', { 
-                                                style: 'currency', 
-                                                currency: 'NPR',
-                                                minimumFractionDigits: 0,
-                                                maximumFractionDigits: 0
-                                            }).format(context.parsed.y);
-                                        }
-                                        return label;
-                                    }
-                                }
-                            }
+             // NEW: Initialize the accounting line chart
+        setTimeout(() => {
+            const accountingCtx = document.getElementById('accountingChart').getContext('2d');
+            
+            // Sample data for accounting chart
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            const revenueData = [42000, 45000, 48000, 46000, 52000, 58000, 62000, 65000, 68000, 72000, 78000, 85000];
+            const expensesData = [25000, 26000, 28000, 27000, 30000, 32000, 35000, 36000, 38000, 40000, 42000, 45000];
+            const profitData = revenueData.map((revenue, index) => revenue - expensesData[index]);
+            
+            // Create gradients for each dataset
+            const revenueGradient = accountingCtx.createLinearGradient(0, 0, 0, 400);
+            revenueGradient.addColorStop(0, 'rgba(32, 201, 151, 0.8)');
+            revenueGradient.addColorStop(1, 'rgba(32, 201, 151, 0.1)');
+            
+            const expensesGradient = accountingCtx.createLinearGradient(0, 0, 0, 400);
+            expensesGradient.addColorStop(0, 'rgba(220, 53, 69, 0.8)');
+            expensesGradient.addColorStop(1, 'rgba(220, 53, 69, 0.1)');
+            
+            const profitGradient = accountingCtx.createLinearGradient(0, 0, 0, 400);
+            profitGradient.addColorStop(0, 'rgba(13, 110, 253, 0.8)');
+            profitGradient.addColorStop(1, 'rgba(13, 110, 253, 0.1)');
+            
+            // Create the line chart
+            const accountingChart = new Chart(accountingCtx, {
+                type: 'line',
+                data: {
+                    labels: months,
+                    datasets: [
+                        {
+                            label: 'Revenue',
+                            data: revenueData,
+                            borderColor: '#20c997',
+                            backgroundColor: revenueGradient,
+                            borderWidth: 2,
+                            pointBackgroundColor: '#20c997',
+                            pointBorderColor: '#fff',
+                            pointBorderWidth: 2,
+                            pointRadius: 4,
+                            pointHoverRadius: 6,
+                            fill: true,
+                            tension: 0.4
                         },
-                        scales: {
-                            x: {
-                                grid: {
-                                    display: false
-                                },
-                                ticks: {
-                                    font: {
-                                        family: "'Inter', sans-serif"
-                                    }
-                                }
-                            },
-                            y: {
-                                beginAtZero: true,
-                                grid: {
-                                    color: 'rgba(0, 0, 0, 0.05)'
-                                },
-                                ticks: {
-                                    font: {
-                                        family: "'Inter', sans-serif"
-                                    },
-                                    callback: function(value) {
-                                        return 'NRP' + value.toLocaleString();
-                                    }
-                                }
-                            }
+                        {
+                            label: 'Expenses',
+                            data: expensesData,
+                            borderColor: '#dc3545',
+                            backgroundColor: expensesGradient,
+                            borderWidth: 2,
+                            pointBackgroundColor: '#dc3545',
+                            pointBorderColor: '#fff',
+                            pointBorderWidth: 2,
+                            pointRadius: 4,
+                            pointHoverRadius: 6,
+                            fill: true,
+                            tension: 0.4
                         },
-                        animation: {
-                            duration: 2000,
-                            easing: 'easeOutQuart'
-                        },
-                        interaction: {
-                            mode: 'nearest',
-                            axis: 'x',
-                            intersect: false
+                        {
+                            label: 'Profit',
+                            data: profitData,
+                            borderColor: '#0d6efd',
+                            backgroundColor: profitGradient,
+                            borderWidth: 2,
+                            pointBackgroundColor: '#0d6efd',
+                            pointBorderColor: '#fff',
+                            pointBorderWidth: 2,
+                            pointRadius: 4,
+                            pointHoverRadius: 6,
+                            fill: true,
+                            tension: 0.4
                         }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                font: {
+                                    family: "'Inter', sans-serif",
+                                    size: 12
+                                },
+                                padding: 20
+                            }
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            padding: 10,
+                            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                            titleFont: {
+                                size: 14
+                            },
+                            bodyFont: {
+                                size: 14
+                            },
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += new Intl.NumberFormat('ne-NP', { 
+                                            style: 'currency', 
+                                            currency: 'NPR',
+                                            minimumFractionDigits: 0,
+                                            maximumFractionDigits: 0
+                                        }).format(context.parsed.y);
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                font: {
+                                    family: "'Inter', sans-serif"
+                                }
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            },
+                            ticks: {
+                                font: {
+                                    family: "'Inter', sans-serif"
+                                },
+                                callback: function(value) {
+                                    return 'NRP' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    },
+                    animation: {
+                        duration: 2000,
+                        easing: 'easeOutQuart'
+                    },
+                    interaction: {
+                        mode: 'nearest',
+                        axis: 'x',
+                        intersect: false
                     }
-                });
+                }
+            });
                 
                 // Add hover effects to the chart
                 const accountingChartCanvas = document.getElementById('accountingChart');
