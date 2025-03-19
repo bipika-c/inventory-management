@@ -55,6 +55,7 @@ body {
     flex-direction: column;
     transition: var(--transition);
     border-right: 1px solid var(--gray-200);
+   
 }
 
 .sidebar-header {
@@ -89,8 +90,6 @@ body {
     align-items: center;
     margin: 0.25rem 0;
 }
-
-
 
 .sidebar .nav-link:hover {
     background-color: rgba(67, 97, 238, 0.05);
@@ -305,7 +304,7 @@ body {
     padding: 0.5rem;
 }
 
-/* Content Styles */
+/* report Styles */
 
 .reports{
     padding:0.5rem;
