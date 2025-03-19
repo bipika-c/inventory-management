@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setting</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/setting/setting.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-container">
+                <i class="bi bi-box-seam-fill logo-icon"></i>
+                <h5 class="logo-text">Inventory MS</h5>
+            </div>
+        </div>
+        <ul class="nav flex-column mt-2">
+            <li class="nav-item">
+                <a href="/dashboard.html" class="nav-link">
+                    <i class="bi bi-house-door-fill"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/inventory/inventory.html" class="nav-link">
+                    <i class="bi bi-box-seam-fill"></i>
+                    <span>Inventory</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/alerts/alerts.html" class="nav-link">
+                    <i class="bi bi-bell-fill"></i>
+                    <span>Alerts</span>
+                    <span class="badge-pill">3</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/report/report.html" class="nav-link">
+                    <i class="bi bi-file-earmark-text-fill"></i>
+                    <span>Reports</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/accounting/accounting.html" class="nav-link">
+                    <i class="bi bi-cash-coin"></i>
+                    <span>Accounting</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/user/users.html" class="nav-link">
+                    <i class="bi bi-people-fill"></i>
+                    <span>Users</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/setting/setting.html" class="nav-link active">
+                    <i class="bi bi-gear-fill"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="d-flex align-items-center me-4">
+                    <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center me-2 overflow-hidden" 
+                         style="width: 40px; height: 40px;">
+                        <img src="/assets/zoro.jpg" alt="Profile Picture" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+                <div class="user-details">
+                    <p class="user-name">Admin User</p>
+                    <p class="user-role">Administrator</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+
+              
+
+                <!-- navbar -->
+            </div>
+            <div class="header-right">
+                <div class="search-container">
+                    <i class="bi bi-search search-icon"></i>
+                    <input type="text" class="form-control" placeholder="Search...">
+                </div>
+                <div class="notification-container">
+                    <button class="btn notification-btn">
+                        <i class="bi bi-bell-fill"></i>
+                        <span class="notification-badge">10</span>
+                    </button>
+                </div>
+
+                
+                <div class="dropdown" >
+                    <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="color: #084a70;">
+                        <div class="d-flex align-items-center me-4">
+                            <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center me-2 overflow-hidden" 
+                                 style="width: 40px; height: 40px;">
+                                <img src="/assets/zoro.jpg" alt="Profile Picture" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                        </div>
+                        <div class="d-none d-sm-block">
+                            <div class="fw-bold dark-blue">abc@gmail.com</div>
+                            <div class="small text-muted">ADMIN</div>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Profile</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+
+  <!-- breadcrumb start -->
+  <div class="breadcrumb-wrapper">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="#"><i class="bi bi-house"></i></a></li>
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Setting</li>
+        </ol>
+    </nav>
+</div>
+
+<!-- breadcrumb end -->
+
+
+        <!-- Content Area -->
+        <div class="content">
+            <div class="content-header">
+                <h4 class="page-title">Setting</h4>
+                
+            </div>
+
+            <div class="content-body">
+
+                 <!-- Settings Cards -->
+                 <div class="row">
+                    <!-- General Settings Section -->
+                    <div class="col-12">
+                        <h4 class="mb-3">General Settings</h4>
+                    </div>
+                    
+                    <!-- Profile -->
+                    <div class="col-12">
+                        <div class="card settings-card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-person-circle settings-icon"></i>
+                                    <h5 class="card-title">Profile</h5>
+                                    <div class="ms-auto">
+                                        <a href="#" class="btn btn-sm btn-outline-primary">Edit</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Change Password -->
+                    <div class="col-12">
+                        <div class="card settings-card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-key settings-icon"></i>
+                                    <h5 class="card-title">Change Password</h5>
+                                    <div class="ms-auto">
+                                        <a href="#" class="btn btn-sm btn-outline-primary">Change</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Inventory Settings Section -->
+                    <div class="col-12">
+                        <div class="section-divider"></div>
+                        <h4 class="mb-3">Inventory Settings</h4>
+                    </div>
+                    
+                    <!-- Stock Threshold Alerts -->
+                    <div class="col-12">
+                        <div class="card settings-card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-exclamation-triangle settings-icon"></i>
+                                    <h5 class="card-title">Low Stock Alerts</h5>
+                                    <div class="ms-auto">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="stockAlertToggle" checked>
+                                            <label class="form-check-label" for="stockAlertToggle"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Stock Alert Options -->
+                                <div class="alert-options" style="display: block;">
+                                    <div class="mb-3">
+                                        <label for="defaultThreshold" class="form-label">Default Low Stock Threshold</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="defaultThreshold" value="10">
+                                            <span class="input-group-text">units</span>
+                                        </div>
+                                        <div class="form-text">Products will be marked as low stock when inventory falls below this threshold</div>
+                                    </div>
+                                    
+                                    <!-- <div class="mb-3">
+                                        <label class="form-label">Alert Recipients</label>
+                                        <div class="d-flex gap-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="managerAlert" checked>
+                                                <label class="form-check-label" for="managerAlert">Inventory Manager</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="purchasingAlert" checked>
+                                                <label class="form-check-label" for="purchasingAlert">Purchasing Department</label>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    
+                                    <button class="btn btn-primary">Save Alert Settings</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Notification Settings Section -->
+                    <div class="col-12">
+                        <div class="section-divider"></div>
+                        <h4 class="mb-3">Notification Settings</h4>
+                    </div>
+                    
+                    <!-- Alert Message -->
+                    <div class="col-12">
+                        <div class="card settings-card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-bell settings-icon"></i>
+                                    <h5 class="card-title">Notification Preferences</h5>
+                                    <div class="ms-auto">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="notificationToggle" checked>
+                                            <label class="form-check-label" for="notificationToggle"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Notification Options -->
+                                <div class="notification-options" style="display: block;">
+                                    <div class="mb-3">
+                                        <label class="form-label">Notification Events</label>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="lowStockNotify" checked>
+                                            <label class="form-check-label" for="lowStockNotify">Low stock alerts</label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="orderNotify" checked>
+                                            <label class="form-check-label" for="orderNotify">New orders</label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="shipmentNotify" checked>
+                                            <label class="form-check-label" for="shipmentNotify">Incoming shipments</label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="expiryNotify">
+                                            <label class="form-check-label" for="expiryNotify">Expiration date alerts</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="priceChangeNotify">
+                                            <label class="form-check-label" for="priceChangeNotify">Price changes</label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Notification Methods</label>
+                                        <div class="d-flex gap-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="emailNotify" checked>
+                                                <label class="form-check-label" for="emailNotify">Email</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="smsNotify">
+                                                <label class="form-check-label" for="smsNotify">SMS</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="appNotify" checked>
+                                                <label class="form-check-label" for="appNotify">In-app</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <button class="btn btn-primary">Save Notification Settings</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Backup & Security Section -->
+                    <div class="col-12">
+                        <div class="section-divider"></div>
+                        <h4 class="mb-3">Backup & Security</h4>
+                    </div>
+                    
+                    <!-- Backup -->
+                    <div class="col-12">
+                        <div class="card settings-card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-cloud-arrow-up settings-icon"></i>
+                                    <h5 class="card-title">Data Backup</h5>
+                                    <div class="ms-auto">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="backupToggle" checked>
+                                            <label class="form-check-label" for="backupToggle"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Backup Options -->
+                                <div class="backup-options" style="display: block;">
+                                    <div class="mb-3">
+                                        <label for="backupFrequency" class="form-label">Backup Frequency</label>
+                                        <select class="form-select" id="backupFrequency">
+                                            <option value="daily">Daily</option>
+                                            <option value="weekly">Weekly</option>
+                                            <option value="monthly">Monthly</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Data to Backup</label>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="productBackup" checked>
+                                            <label class="form-check-label" for="productBackup">Product data</label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inventoryBackup" checked>
+                                            <label class="form-check-label" for="inventoryBackup">Inventory levels</label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="orderBackup" checked>
+                                            <label class="form-check-label" for="orderBackup">Order history</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="supplierBackup" checked>
+                                            <label class="form-check-label" for="supplierBackup">Supplier information</label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Backup Location</label>
+                                        <div class="d-flex gap-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="backupLocation" id="cloudBackup" checked>
+                                                <label class="form-check-label" for="cloudBackup">Cloud Storage</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="backupLocation" id="localBackup">
+                                                <label class="form-check-label" for="localBackup">Local Storage</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Last Backup: <span class="text-muted">March 19, 2025 10:30 AM</span></label>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <button class="btn btn-sm btn-outline-primary" id="backupNowBtn">Backup Now</button>
+                                            <div class="progress backup-progress d-none w-100" id="backupProgress">
+                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <button class="btn btn-primary">Save Backup Settings</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+               <!-- end setting card -->
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="/script.js"></script>
+    <script src="/setting/setting.js"></script>
+
+
+</body>
+</html>
