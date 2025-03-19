@@ -21,6 +21,13 @@
    color: #343a40;
    margin-bottom: 0;
    font-size: 1.2rem;
+   text-decoration: none !important;
+    border-bottom: none !important;
+   
+}
+/* This will override any ::after pseudo-elements that might be adding underlines */
+.settings-card .card-title::after {
+    display: none !important;
 }
 
 .settings-icon {
