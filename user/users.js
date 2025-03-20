@@ -49,6 +49,56 @@
         status: 'active',
         createdDate: '2023-05-12',
         photo: '/assets/robin.png'
+    },
+    {
+        id: '6',
+        firstName: 'Gita',
+        lastName: 'Se',
+        email: 'gita@gmail.com',
+        role: 'user',
+        status: 'active',
+        createdDate: '2023-05-12',
+        photo: '/assets/ussop.jpg'
+    },
+    {
+        id: '7',
+        firstName: 'Eta',
+        lastName: 'Se',
+        email: 'eta@gmail.com',
+        role: 'user',
+        status: 'active',
+        createdDate: '2023-05-12',
+        photo: '/assets/chopper.jpg'
+    },
+    {
+        id: '8',
+        firstName: 'HEhe',
+        lastName: 'Se',
+        email: 'hehe@gmail.com',
+        role: 'user',
+        status: 'active',
+        createdDate: '2023-05-12',
+        photo: '/assets/brook.jpg'
+    },
+    {
+        id: '9',
+        firstName: 'Super',
+        lastName: 'Se',
+        email: 'super@gmail.com',
+        role: 'user',
+        status: 'active',
+        createdDate: '2023-05-12',
+        photo: '/assets/franky.jpg'
+    },
+    {
+        id: '10',
+        firstName: 'Macha',
+        lastName: 'Water',
+        email: 'man@gmail.com',
+        role: 'admin',
+        status: 'active',
+        createdDate: '2023-05-12',
+        photo: '/assets/zim.png'
     }
 ];
 
@@ -240,7 +290,7 @@ function renderUserTable() {
             <td>${statusBadge}</td>
             <td class="text-end">
                 <button class="btn btn-sm btn-outline-primary action-btn me-1 " onclick="editUser('${user.id}')">
-                    <i class="bi bi-pencil"></i>
+                    <i class="bi bi-pencil" style=></i>
                 </button>
                 <button class="btn btn-sm btn-outline-danger action-btn" onclick="deleteUser('${user.id}')">
                     <i class="bi bi-trash"></i>
