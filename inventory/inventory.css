@@ -1,0 +1,109 @@
+.dashboard-card {
+    position: relative;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    height: 100%;
+}
+
+.card-border {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+}
+
+/* Card border colors */
+.receipts-sf {
+    background-color: #28a745;
+}
+
+.internal-sf {
+    background-color: #17a2b8;
+}
+
+.delivery-sf {
+    background-color: #17a2b8;
+}
+
+.manufacturing-sf {
+    background-color: #28a745;
+}
+
+.pos-sf {
+    background-color: #ffc107;
+}
+
+.receipts-ch {
+    background-color: #6f42c1;
+}
+
+.internal-ch {
+    background-color: #6f42c1;
+}
+
+.delivery-ch {
+    background-color: #dc3545;
+}
+
+.pos-ch {
+    background-color: #17a2b8;
+}
+
+.manufacturing-ch {
+    background-color: #28a745;
+}
+
+.dropship {
+    background-color: #dc3545;
+}
+
+.card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 10px 20px;
+    color: #333;
+}
+
+.card-subtitle {
+    font-size: 0.85rem;
+    padding: 5px 10px;
+    color: #6c757d;
+}
+
+.btn-process {
+    background-color: #17a2b8;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-left: 15px;
+    border: none;
+    border-radius: 4px;
+}
+
+.btn-process:hover {
+    background-color: #138496;
+    color: white;
+}
+
+.card-body p {
+    font-size: 0.85rem;
+    color: #6c757d;
+    padding: 5px 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .container-fluid {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-card {
+        margin-bottom: 15px;
+    }
+}

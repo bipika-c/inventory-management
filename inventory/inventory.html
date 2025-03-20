@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/inventory/inventory.css">
 </head>
 <body>
     <!-- Sidebar -->
@@ -147,8 +148,12 @@
         <!-- Content Area -->
         <div class="content">
             <div class="content-header">
-                    <h4 class="page-title">Inventory Reports</h4>
+                    <h4 class="page-title">Inventory Overview</h4>
                     <div class="actions">
+                        <div class="search-container">
+                            <i class="bi bi-search search-icon"></i>
+                            <input type="text" class="form-control" id="tableSearch" placeholder="Search items...">
+                        </div>
                         <button class="btn action-btn" id="filterToggleBtn">
                             <i class="bi bi-filter"></i>
                             <span>Filter</span>
@@ -162,6 +167,87 @@
             </div>
 
             <div class="content-body">
+
+                <div class="container-fluid py-4">
+                    <div class="row g-4">
+                        
+                        <!-- Receipts  -->
+                        <div class="col-md-4 col-lg-4">
+                            <div class="card dashboard-card border-0 h-100">
+                               
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <div>
+                                            <h5 class="card-title">Receipts</h5>
+                                        </div>
+                                    </div>
+                                    <!-- Added d-flex to create a row layout -->
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <button class="btn btn-process">5 TO PROCESS</button>
+                                        <!-- Status information on the right side -->
+                                        <div class="text-end">
+                                            <p class="mb-0 small">5 Late</p>
+                                            <p class="mb-0 small">1 Back Orders</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dropship  -->
+                        <div class="col-md-4 col-lg-4">
+                            <div class="card dashboard-card border-0 h-100">
+                              
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <div>
+                                            <h5 class="card-title">Dropship</h5>
+                                        </div>
+                                        
+                                    </div>
+                                    <!-- Added d-flex to create a row layout -->
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <button class="btn btn-process">0 TO PROCESS</button>
+                                        <!-- Status information on the right side -->
+                                        <div class="text-end">
+                                            <p class="mb-0 small">all done</p>
+                                            <p class="mb-0 small">all done</p>
+                                            <p class="mb-0 small">all done</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                         <!-- manufacture  -->
+                         <div class="col-md-4 col-lg-4">
+                            <div class="card dashboard-card border-0 h-100">
+                              
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <div>
+                                            <h5 class="card-title">Manufacture</h5>
+                                        </div>
+                                        
+                                    </div>
+                                    <!-- Added d-flex to create a row layout -->
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <button class="btn btn-process">1 TO PROCESS</button>
+                                        <!-- Status information on the right side -->
+                                        <div class="text-end">
+                                            <p class="mb-0 small">all done</p>
+                                            <p class="mb-0 small">all done</p>
+                                            <p class="mb-0 small">all done</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        
+            <!-- end card -->
+                    </div>
+                </div>
               
             </div>
         </div>
@@ -173,5 +259,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
     <script src="/styles.css"></script>
+    <script src="/inventory/inventory.js"></script>
+
 </body>
 </html>
