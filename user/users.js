@@ -28,7 +28,7 @@
         role: 'editor',
         status: 'pending',
         createdDate: '2023-03-10',
-        photo: '/assets/sanji.jpg'
+        photo: '/assets/sanji.jpg'  
     },
     {
         id: '4',

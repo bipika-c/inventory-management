@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+     <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/profile/profile.css">
+
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-container">
+                <i class="bi bi-box-seam-fill logo-icon"></i>
+                <h5 class="logo-text">Inventory MS</h5>
+            </div>
+        </div>
+        <ul class="nav flex-column mt-0.5">
+            <li class="nav-item">
+                <a href="/dashboard.html" class="nav-link">
+                    <i class="bi bi-house-door-fill"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/inventory/inventory.html" class="nav-link">
+                    <i class="bi bi-box-seam-fill"></i>
+                    <span>Inventory</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/alerts/alerts.html" class="nav-link">
+                    <i class="bi bi-bell-fill"></i>
+                    <span>Alerts</span>
+                    <span class="badge-pill">3</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/report/report.html" class="nav-link">
+                    <i class="bi bi-flag-fill"></i>
+                    <span>Reports</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/accounting/accounting.html" class="nav-link">
+                    <i class="bi bi-cash-coin"></i>
+                    <span>Accounting</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/user/users.html" class="nav-link">
+                    <i class="bi bi-people-fill"></i>
+                    <span>Users</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/setting/setting.html" class="nav-link">
+                    <i class="bi bi-gear-fill"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+
+            
+        </ul>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="d-flex align-items-center me-4">
+                    <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center me-2 overflow-hidden" 
+                         style="width: 40px; height: 40px;">
+                        <img src="/assets/zoro.jpg" alt="Profile Picture" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+                <div class="user-details">
+                    <p class="user-name">Admin User</p>
+                    <p class="user-role">Administrator</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+
+              
+
+                <!-- navbar -->
+            </div>
+            <div class="header-right">
+                <div class="search-container">
+                    <i class="bi bi-search search-icon"></i>
+                    <input type="text" class="form-control" placeholder="Search...">
+                </div>
+                <div class="notification-container">
+                    <button class="btn notification-btn">
+                        <i class="bi bi-bell-fill"></i>
+                        <span class="notification-badge">10</span>
+                    </button>
+                </div>
+
+                
+                <div class="dropdown" >
+                    <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="color: #084a70;">
+                        <div class="d-flex align-items-center me-4">
+                            <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center me-2 overflow-hidden" 
+                                 style="width: 40px; height: 40px;">
+                                <img src="/assets/zoro.jpg" alt="Profile Picture" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                        </div>
+                        <div class="d-none d-sm-block">
+                            <div class="fw-bold dark-blue">abc@gmail.com</div>
+                            <div class="small text-muted">ADMIN</div>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="profile/profile.html"><i class="bi bi-person me-2"></i>Profile</a></li>
+                        <li><a class="dropdown-item" href="setting/setting.html"><i class="bi bi-gear me-2"></i>Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="login.html"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+
+  <!-- breadcrumb start -->
+  <div class="breadcrumb-wrapper">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="#"><i class="bi bi-house"></i></a></li>
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Profile</li>
+        </ol>
+    </nav>
+</div>
+
+<!-- breadcrumb end -->
+
+
+        <!-- Content Area -->
+        <div class="content">
+            <div class="content-header">
+                <h4 class="page-title">User Profile</h4>
+                
+            </div>
+
+            <div class="content-body">
+              <!-- Profile Body -->
+        <div class="profile-body">
+            <div class="row">
+                <!-- Profile Image and Basic Info -->
+                <div class="col-md-4 text-center">
+                    <div class="profile-image-container">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-4N3lWmNnhJKSnDmreso5YzUo40ncIx.png" alt="Profile Image" class="profile-image" id="profileImage">
+                        <div class="image-upload" id="uploadBtn">
+                            <i class="fas fa-camera"></i>
+                            <input type="file" id="imageUpload" style="display: none;">
+                        </div>
+                    </div>
+                    <h4 class="mt-3 mb-1" id="displayName">Abeve Uiadakw</h4>
+                    <p class="text-muted"><i class="fas fa-map-marker-alt me-2"></i><span id="displayLocation">Kathmandu</span></p>
+                    <div class="d-flex justify-content-center mt-3">
+                        <span class="badge bg-primary me-2 p-2"><i class="fas fa-envelope me-1"></i> Message</span>
+                        <span class="badge bg-secondary p-2"><i class="fas fa-user-plus me-1"></i> Connect</span>
+                    </div>
+                </div>
+                
+                <!-- Profile Details -->
+                <div class="col-md-8">
+                    <!-- Tabs Navigation -->
+                    <ul class="nav nav-tabs" id="profileTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#info" type="button" role="tab" aria-controls="info" aria-selected="true">
+                                <i class="fas fa-user me-2"></i>Personal Info
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="activity-tab" data-bs-toggle="tab" data-bs-target="#activity" type="button" role="tab" aria-controls="activity" aria-selected="false">
+                                <i class="fas fa-chart-line me-2"></i>Activity
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">
+                                <i class="fas fa-cog me-2"></i>Settings
+                            </button>
+                        </li>
+                    </ul>
+                    
+                    <!-- Tabs Content -->
+                    <div class="tab-content" id="profileTabsContent">
+                        <!-- Personal Info Tab -->
+                        <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
+                            <div id="viewMode">
+                                <div class="profile-info">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="info-label">Name</div>
+                                            <div class="info-value" id="nameValue">Abeve Uiadakw</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="info-label">Address</div>
+                                            <div class="info-value" id="addressValue">Kathmandu</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="info-label">Date of Birth</div>
+                                            <div class="info-value" id="dobValue">2003-02-10</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="info-label">Gender</div>
+                                            <div class="info-value" id="genderValue">Male</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="info-label">Phone</div>
+                                            <div class="info-value" id="phoneValue">9876543210</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="info-label">Email</div>
+                                            <div class="info-value" id="emailValue">abeve.uiadakw@example.com</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="profile-actions">
+                                    <button class="btn btn-success" id="editProfileBtn">
+                                        <i class="fas fa-edit me-2"></i>Edit Profile
+                                    </button>
+                                    <button class="btn btn-outline-primary">
+                                        <i class="fas fa-download me-2"></i>Download Info
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Edit Mode (Initially Hidden) -->
+                            <div id="editMode" class="edit-mode fade-in" style="display: none;">
+                                <form id="profileForm">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="nameInput" class="form-label">Name</label>
+                                            <input type="text" class="form-control" id="nameInput" value="Abeve Uiadakw">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="addressInput" class="form-label">Address</label>
+                                            <input type="text" class="form-control" id="addressInput" value="Kathmandu">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="dobInput" class="form-label">Date of Birth</label>
+                                            <input type="date" class="form-control" id="dobInput" value="2003-02-10">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="genderInput" class="form-label">Gender</label>
+                                            <select class="form-select" id="genderInput">
+                                                <option value="Male" selected>Male</option>
+                                                <option value="Female">Female</option>
+                                                <option value="Other">Other</option>
+                                                <option value="Prefer not to say">Prefer not to say</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="phoneInput" class="form-label">Phone</label>
+                                            <input type="tel" class="form-control" id="phoneInput" value="9876543210">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="emailInput" class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="emailInput" value="abeve.uiadakw@example.com">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-4">
+                                        <button type="button" class="btn btn-primary" id="saveProfileBtn">
+                                            <i class="fas fa-save me-2"></i>Save Changes
+                                        </button>
+                                        <button type="button" class="btn btn-outline-secondary" id="cancelEditBtn">
+                                            <i class="fas fa-times me-2"></i>Cancel
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <!-- Activity Tab -->
+                        <div class="tab-pane fade" id="activity" role="tabpanel" aria-labelledby="activity-tab">
+                            <div class="activity-item">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <h6 class="mb-1">Profile Updated</h6>
+                                        <p class="text-muted mb-0">You updated your profile information</p>
+                                    </div>
+                                    <small class="text-muted">2 days ago</small>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <h6 class="mb-1">Password Changed</h6>
+                                        <p class="text-muted mb-0">You changed your account password</p>
+                                    </div>
+                                    <small class="text-muted">1 week ago</small>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <h6 class="mb-1">Account Created</h6>
+                                        <p class="text-muted mb-0">You created your account</p>
+                                    </div>
+                                    <small class="text-muted">1 month ago</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Settings Tab -->
+                        <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+                            <div class="mb-4">
+                                <h5>Account Settings</h5>
+                                <div class="form-check form-switch mb-3">
+                                    <input class="form-check-input" type="checkbox" id="emailNotifications" checked>
+                                    <label class="form-check-label" for="emailNotifications">Email Notifications</label>
+                                </div>
+                                <div class="form-check form-switch mb-3">
+                                    <input class="form-check-input" type="checkbox" id="smsNotifications">
+                                    <label class="form-check-label" for="smsNotifications">SMS Notifications</label>
+                                </div>
+                                <div class="form-check form-switch mb-3">
+                                    <input class="form-check-input" type="checkbox" id="twoFactorAuth">
+                                    <label class="form-check-label" for="twoFactorAuth">Two-Factor Authentication</label>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h5>Privacy Settings</h5>
+                                <div class="form-check form-switch mb-3">
+                                    <input class="form-check-input" type="checkbox" id="profileVisibility" checked>
+                                    <label class="form-check-label" for="profileVisibility">Profile Visibility</label>
+                                </div>
+                                <div class="form-check form-switch mb-3">
+                                    <input class="form-check-input" type="checkbox" id="activityTracking" checked>
+                                    <label class="form-check-label" for="activityTracking">Activity Tracking</label>
+                                </div>
+                            </div>
+                            
+                            <button class="btn btn-primary">Save Settings</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+        </div>
+    </div>
+
+   
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="/script.js"></script>
+    <script src="/profile/profile.js"></script>
+
+</body>
+</html>
