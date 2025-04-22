@@ -300,14 +300,13 @@
                                     <span class="event-label">Upcoming Events</span>
                                     <span class="event-value upcoming counter-animation" data-target="30">0</span>
                                 </div>
-                                <!-- <a href="event/event.html" class="view-btn-link">
-                                    <button class="view-btn">
-                                        view <i class="fas fa-arrow-right"></i>
-                                    </button>
-                                </a> -->
+                               
+                               
                                 <button class="view-btn">
                                     view <i class="fas fa-arrow-right"></i>
                                 </button>
+                               
+
                             </div>
                             
                             <div class="chart-container animate__animated animate__fadeInRight">
@@ -496,7 +495,7 @@
                 
                 setTimeout(() => {
                     this.classList.remove('animate__animated', 'animate__rubberBand');
-                    alert('Viewing all events...');
+                    window.location.href = '/event/event.html'; // Redirect to the events page
                 }, 800);
             });
 
