@@ -131,135 +131,272 @@
         </header>
 
 
-  <!-- breadcrumb start -->
-  <div class="breadcrumb-wrapper">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="#"><i class="bi bi-house"></i></a></li>
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Inventory</li>
-        </ol>
-    </nav>
-</div>
+           <!-- breadcrumb start -->
+           <div class="breadcrumb-wrapper">
+             <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                   <li class="breadcrumb-item"><a href="#"><i class="bi bi-house"></i></a></li>
+                   <li class="breadcrumb-item"><a href="#">Home</a></li>
+                   <li class="breadcrumb-item active" aria-current="page">Inventory</li>
+                </ol>
+              </nav>
+           </div>
 
-<!-- breadcrumb end -->
+              <!-- breadcrumb end -->
 
 
-        <!-- Content Area -->
-        <div class="content">
-            <div class="content-header">
-                    <h4 class="page-title">Inventory Overview</h4>
-                    <div class="actions">
-                        <div class="search-container">
-                            <i class="bi bi-search search-icon"></i>
-                            <input type="text" class="form-control" id="tableSearch" placeholder="Search items...">
+              <!-- Content Area -->
+        
+           
+
+                <div class="content-body">
+                <div class="content">
+                    <div class="content-header">
+                        <h4 class="page-title">Inventory</h4>
+                        
+                    </div>
+                    
+                    <div class="content-body">
+                        <!-- Search and Actions -->
+                        <div class="search-actions fade-in">
+                            <div class="search-container">
+                                <i class="bi bi-search search-icon"></i>
+                                <input type="text" class="form-control" id="searchInput" placeholder="Search items by name, ID or category...">
+                            </div>
+                            <button class="btn btn-primary" id="addInventoryBtn">
+                                <i class="bi bi-plus-lg btn-icon"></i>
+                                Add New Item
+                            </button>
                         </div>
-                        <button class="btn action-btn" id="filterToggleBtn">
-                            <i class="bi bi-filter"></i>
-                            <span>Filter</span>
-                        </button>
-                        <button class="btn action-btn primary">
-                            <i class="bi bi-plus-lg"></i>
-                            <span>New Item</span>
-                        </button>
+        
+                        <!-- Inventory Table -->
+                        <div class="table-container fade-in">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 60px">#</th>
+                                            <th style="width: 120px">Item ID</th>
+                                            <th>Item Name</th>
+                                            <th style="width: 120px">Quantity</th>
+                                            <th style="width: 120px">Price</th>
+                                            <th style="width: 150px">Category</th>
+                                            <th style="width: 150px">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="inventoryTableBody">
+                                        <!-- Table rows will be added dynamically -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+        
+                        <!-- Pagination -->
+                        <div class="pagination-container fade-in">
+                            <ul class="pagination">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                        <i class="bi bi-chevron-left"></i>
+                                    </a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">
+                                        <i class="bi bi-chevron-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="content-body">
 
-                <div class="container-fluid py-4">
-                    <div class="row g-4">
-                        
-                        <!-- Receipts  -->
-                        <div class="col-md-4 col-lg-4">
-                            <div class="card dashboard-card border-0 h-100">
-                               
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-start mb-2">
-                                        <div>
-                                            <h5 class="card-title">Receipts</h5>
-                                        </div>
-                                    </div>
-                                    <!-- Added d-flex to create a row layout -->
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <button class="btn btn-process">5 TO PROCESS</button>
-                                        <!-- Status information on the right side -->
-                                        <div class="text-end">
-                                            <p class="mb-0 small">5 Late</p>
-                                            <p class="mb-0 small">1 Back Orders</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        
+             </div>
 
-                        <!-- Dropship  -->
-                        <div class="col-md-4 col-lg-4">
-                            <div class="card dashboard-card border-0 h-100">
-                              
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-start mb-2">
-                                        <div>
-                                            <h5 class="card-title">Dropship</h5>
-                                        </div>
-                                        
-                                    </div>
-                                    <!-- Added d-flex to create a row layout -->
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <button class="btn btn-process">0 TO PROCESS</button>
-                                        <!-- Status information on the right side -->
-                                        <div class="text-end">
-                                            <p class="mb-0 small">all done</p>
-                                            <p class="mb-0 small">all done</p>
-                                            <p class="mb-0 small">all done</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                         <!-- manufacture  -->
-                         <div class="col-md-4 col-lg-4">
-                            <div class="card dashboard-card border-0 h-100">
-                              
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-start mb-2">
-                                        <div>
-                                            <h5 class="card-title">Manufacture</h5>
-                                        </div>
-                                        
-                                    </div>
-                                    <!-- Added d-flex to create a row layout -->
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <button class="btn btn-process">1 TO PROCESS</button>
-                                        <!-- Status information on the right side -->
-                                        <div class="text-end">
-                                            <p class="mb-0 small">all done</p>
-                                            <p class="mb-0 small">all done</p>
-                                            <p class="mb-0 small">all done</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-            
-                        
-            <!-- end card -->
-                    </div>
+              <!-- View Item Modal -->
+    <div class="modal fade" id="viewItemModal" tabindex="-1" aria-labelledby="viewItemModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewItemModalLabel">
+                        <i class="bi bi-info-circle me-2"></i>
+                        Item Details
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              
+                <div class="modal-body" id="viewItemDetails">
+                    <!-- Item details will be displayed here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
+    
+    <!-- Edit Item Modal -->
+    <div class="modal fade" id="editItemModal" tabindex="-1" aria-labelledby="editItemModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editItemModalLabel">
+                        <i class="bi bi-pencil-square me-2"></i>
+                        Edit Item
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editItemForm">
+                        <input type="hidden" id="editItemIndex">
+                        <div class="mb-3">
+                            <label for="editItemId" class="form-label">Item ID</label>
+                            <input type="text" class="form-control" id="editItemId" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editItemName" class="form-label">Item Name</label>
+                            <input type="text" class="form-control" id="editItemName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editQuantity" class="form-label">Quantity</label>
+                            <input type="number" class="form-control" id="editQuantity" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editPrice" class="form-label">Price</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" step="0.01" class="form-control" id="editPrice" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editCategory" class="form-label">Category</label>
+                            <select class="form-select" id="editCategory" required>
+                                <option value="">Select Category</option>
+                                <option value="Electronics">Electronics</option>
+                                <option value="Clothing">Clothing</option>
+                                <option value="Furniture">Furniture</option>
+                                <option value="Books">Books</option>
+                                <option value="Food">Food</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="saveEditBtn">
+                        <i class="bi bi-check-lg me-1"></i>
+                        Save Changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-danger">
+                    <h5 class="modal-title" id="deleteConfirmModalLabel">
+                        <i class="bi bi-exclamation-triangle me-2"></i>
+                        Confirm Delete
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <i class="bi bi-trash text-danger" style="font-size: 3.5rem;"></i>
+                    </div>
+                    <p class="text-center">Are you sure you want to delete this item? This action cannot be undone.</p>
+                    <div class="alert alert-warning">
+                        <p id="deleteItemInfo" class="mb-0"></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteBtn">
+                        <i class="bi bi-trash me-1"></i>
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add Item Modal -->
+    <div class="modal fade" id="addItemModal" tabindex="-1" aria-labelledby="addItemModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addItemModalLabel">
+                        <i class="bi bi-plus-circle me-2"></i>
+                        Add New Item
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addItemForm">
+                        <div class="mb-3">
+                            <label for="newItemId" class="form-label">Item ID</label>
+                            <input type="text" class="form-control" id="newItemId" required>
+                            <div class="form-text">Enter a unique identifier for this item.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newItemName" class="form-label">Item Name</label>
+                            <input type="text" class="form-control" id="newItemName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newQuantity" class="form-label">Quantity</label>
+                            <input type="number" class="form-control" id="newQuantity" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newPrice" class="form-label">Price</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" step="0.01" class="form-control" id="newPrice" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newCategory" class="form-label">Category</label>
+                            <select class="form-select" id="newCategory" required>
+                                <option value="">Select Category</option>
+                                <option value="Electronics">Electronics</option>
+                                <option value="Clothing">Clothing</option>
+                                <option value="Furniture">Furniture</option>
+                                <option value="Books">Books</option>
+                                <option value="Food">Food</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-success" id="saveNewItemBtn">
+                        <i class="bi bi-plus-lg me-1"></i>
+                        Add Item
+                    </button>
+                </div>
+              </div>
+             
+          </div>
 
-   
+         </div>
+    </div>
+    
+
+        
+    
+
 
     <!-- Bootstrap 5 JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
-    <script src="/styles.css"></script>
-    <script src="/inventory/inventory.js"></script>
+    
+    <script src="inventory.js"></script>
 
 </body>
 </html>
