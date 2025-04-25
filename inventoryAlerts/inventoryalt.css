@@ -133,6 +133,7 @@ body {
 
 .table-card {
     padding: 1.5rem;
+    overflow: hidden;
 }
 
 .form-control, .form-select {
@@ -168,6 +169,7 @@ body {
     border-collapse: separate;
     border-spacing: 0;
     width: 100%;
+    min-width: 800px; /* Ensures table has a minimum width for scrolling */
 }
 
 .table th {
@@ -304,7 +306,9 @@ body {
 
 .table-responsive {
     border-radius: 10px;
-    overflow: hidden;
+    overflow-x: auto;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
 }
 
 .results-info {
@@ -320,7 +324,12 @@ body {
     font-weight: 500;
 }
 
+/* Mobile optimizations */
 @media (max-width: 768px) {
+    .table-card {
+        padding: 1rem;
+    }
+    
     .table td, .table th {
         padding: 0.75rem;
     }
@@ -335,4 +344,41 @@ body {
     .filter-chip {
         flex-shrink: 0;
     }
+    
+    .pagination .page-item .page-link {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+    }
+    
+    .dashboard-title {
+        font-size: 1.5rem;
+    }
+    
+    .search-input {
+        height: 45px;
+    }
+    
+    .results-info {
+        font-size: 0.8rem;
+    }
+}
+
+/* Ensure horizontal scrolling works properly on all browsers */
+.table-responsive::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
 }
